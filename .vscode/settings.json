@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Lass-mich-KOCHEN.sln"
+    "dotnet.defaultSolution": "Lass mich KOCHEN.sln"
 }
