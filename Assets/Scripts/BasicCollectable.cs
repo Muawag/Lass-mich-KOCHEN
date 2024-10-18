@@ -1,13 +1,15 @@
+using System.Xml.Serialization;
 using UnityEngine;
 
-public class TestInteract : MonoBehaviour, IInteractable
+public class BasicCollectable : MonoBehaviour, IInteractable
 {
+    [SerializeField] Inventar inventar;
     public void OnInteract(object sender, InteractEventArgs e)
     {
-       // IInteractable interact = (IInteractable) this;
 #pragma warning disable CS0252 // Possible unintended reference comparison; left hand side needs cast
-        if(e.interactable == this) {
-            Debug.Log("Shuuu");
+        if (e.interactable == this) {
+            Debug.Log("Rein");
+            inventar.Add(gameObject);
         }
 #pragma warning restore CS0252 // Possible unintended reference comparison; left hand side needs cast
     }
