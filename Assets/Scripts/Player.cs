@@ -67,6 +67,9 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate() {
         Move();
+        if(Input.GetKeyDown(KeyCode.L)){
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.punch, transform.position);
+        }
     }
     private void Drop(InputAction.CallbackContext context) {
         if(context.performed) {

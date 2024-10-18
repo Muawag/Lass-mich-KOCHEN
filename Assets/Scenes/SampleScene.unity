@@ -129,7 +129,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e25db3398a146234cb6faeb66e9f3233, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.83673
+      value: -8.371
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e25db3398a146234cb6faeb66e9f3233, type: 3}
       propertyPath: m_LocalPosition.y
@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e25db3398a146234cb6faeb66e9f3233, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.4124825
+      value: -1.054
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e25db3398a146234cb6faeb66e9f3233, type: 3}
       propertyPath: m_LocalRotation.w
@@ -227,6 +227,13 @@ MonoBehaviour:
       Data3: 1747124641
       Data4: 35034936
     Path: event:/Test/Test
+  <punch>k__BackingField:
+    Guid:
+      Data1: 773973528
+      Data2: 1095910243
+      Data3: -1587098951
+      Data4: 1537389054
+    Path: event:/New Event
 --- !u!1 &319568064
 GameObject:
   m_ObjectHideFlags: 0
