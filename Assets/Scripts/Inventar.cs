@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class Inventar : MonoBehaviour
 {
-    [SerializeField] WeaponTypes weapon;
+    [SerializeField] Weapon weapon;
     [SerializeField] ConsumeableType consumeable;
 
-    public void AddWeapon(WeaponTypes type) {
+    public void AddWeapon(Weapon type) {
         weapon = type;
-        EventManager.instance.AddWeapon(weapon);
     }
     public void AddConsumeable(ConsumeableType type) {
         consumeable = type;
         EventManager.instance.AddConsumeable(consumeable);
+    }
+
+    public float GetDamage() {
+        return weapon.GetDamage();
     }
 }
