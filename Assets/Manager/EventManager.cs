@@ -53,4 +53,10 @@ public class EventManager : MonoBehaviour
     public void Escaped(){
         EscapedEvent?.Invoke(this, EventArgs.Empty);
     }
+    public void AddWeapon(WeaponTypes wtype) {
+        AddWeaponEvent?.Invoke(this, new WeaponAddEventArgs {type = wtype});
+    }
+    public void AddConsumeable(ConsumeableType ctype) {
+        AddConsumeableEvent?.Invoke(this, new ConsumeableAddEventArgs {type = ctype});
+    }
 }
