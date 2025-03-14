@@ -97,7 +97,12 @@ public class Player : MonoBehaviour
     }
     private void Use(InputAction.CallbackContext context) {
         if(context.performed) {
-            Debug.Log("Kloppen");
+            if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
+                if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem interact)) {
+                    Debug.Log("AGGGGGGGGG");
+                    EventManager.instance.DamageObject(interact, 20f);
+                }
+            }
         }
     }
 }

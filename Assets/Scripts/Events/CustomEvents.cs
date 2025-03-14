@@ -5,6 +5,10 @@ using UnityEngine;
 public class InteractEventArgs : EventArgs {
     public IInteractable interactable; 
 }
+public class DamageEventArgs : EventArgs {
+    public DestryableItem damageable; 
+    public float damageValue;
+}
 public class NoiseEvent : EventArgs {
     public float noise;
 }

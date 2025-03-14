@@ -9,9 +9,13 @@ public class EventManager : MonoBehaviour
     public EventHandler<InteractEventArgs> OnInteract;
     public EventHandler<NoiseEvent> MakeNoiseEvent;
     public EventHandler<DestroyEvent> ObjectDestroyedEvent;
+<<<<<<< Updated upstream
     public EventHandler<EventArgs> AlarmEvent;
     public EventHandler<EventArgs> TimesUpEvent;
     
+=======
+    public EventHandler<DamageEventArgs> DamageObjectEvent;
+>>>>>>> Stashed changes
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -23,12 +27,16 @@ public class EventManager : MonoBehaviour
     public void Interact(IInteractable interactable) {
         OnInteract?.Invoke(this, new InteractEventArgs {interactable = interactable});
     }
+    public void DamageObject(DestryableItem damageItem, float damageValue) {
+        DamageObjectEvent?.Invoke(this, new DamageEventArgs {damageable = damageItem, damageValue = damageValue});
+    }
     public void MakeNoise(float noiseVolume) {
         MakeNoiseEvent?.Invoke(this, new NoiseEvent{noise = noiseVolume});
     }
     public void ObjectDestroyed(float value, GameObject gobject) {
         ObjectDestroyedEvent?.Invoke(this, new DestroyEvent{money = value});
     }
+<<<<<<< Updated upstream
     IEnumerator DestroyAfter(GameObject toDestroy) {
         yield return new WaitForSeconds(1f);
         Destroy(toDestroy);
@@ -40,4 +48,8 @@ public class EventManager : MonoBehaviour
         AlarmEvent?.Invoke(this,EventArgs.Empty);
     }
     
+=======
+    
+
+>>>>>>> Stashed changes
 }
