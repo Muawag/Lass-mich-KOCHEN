@@ -9,7 +9,6 @@ public class BasicCollectable : MonoBehaviour, IInteractable
 #pragma warning disable CS0252 // Possible unintended reference comparison; left hand side needs cast
         if (e.interactable == this) {
             Debug.Log("Rein");
-            inventar.Add(gameObject);
         }
 #pragma warning restore CS0252 // Possible unintended reference comparison; left hand side needs cast
     }

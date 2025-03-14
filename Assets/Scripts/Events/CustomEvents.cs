@@ -15,3 +15,9 @@ public class NoiseEvent : EventArgs {
 public class DestroyEvent : EventArgs {
     public float money;
 }
+public class WeaponAddEventArgs : EventArgs {
+    public WeaponTypes type;
+}
+public class ConsumeableAddEventArgs : EventArgs {
+    public ConsumeableType type;
+}

@@ -12,6 +12,8 @@ public class EventManager : MonoBehaviour
     public EventHandler<EventArgs> AlarmEvent;
     public EventHandler<EventArgs> TimesUpEvent;
     public EventHandler<DamageEventArgs> DamageObjectEvent;
+    public EventHandler<WeaponAddEventArgs> AddWeaponEvent;
+    public EventHandler<ConsumeableAddEventArgs> AddConsumeableEvent;
     
     private void Awake() {
         if(instance == null) {
@@ -43,5 +45,10 @@ public class EventManager : MonoBehaviour
     public void Alarm(){
         AlarmEvent?.Invoke(this,EventArgs.Empty);
     }
-    
+    public void AddWeapon(WeaponTypes wtype) {
+        AddWeaponEvent?.Invoke(this, new WeaponAddEventArgs{type = wtype});
+    }
+    public void AddConsumeable(ConsumeableType ctype) {
+        AddConsumeableEvent?.Invoke(this, new ConsumeableAddEventArgs{type = ctype});
+    }
 }
