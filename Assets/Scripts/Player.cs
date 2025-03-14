@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
         input.Player.Jump.performed += Jump;
         input.Player.Sprint.started += Sprint;
         input.Player.Sprint.canceled += Sprint;
+        input.Player.Use.performed += Use;
     }
     private void Interact(InputAction.CallbackContext context) {
         if(context.performed) {
@@ -92,6 +93,11 @@ public class Player : MonoBehaviour
         else if(context.canceled) {
             movementForce = 2f;
             maxSpeed = 1f;
+        }
+    }
+    private void Use(InputAction.CallbackContext context) {
+        if(context.performed) {
+            Debug.Log("Kloppen");
         }
     }
 }
