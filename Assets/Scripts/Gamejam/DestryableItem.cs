@@ -24,7 +24,7 @@ public class DestryableItem : MonoBehaviour
         hp -= value;
         Debug.Log("Aua");
         EventManager.instance.MakeNoise(noisevolume);
-        if(value <= hp) {
+        if(hp <= 0f) {
             DestroyObject();
         }
     }
