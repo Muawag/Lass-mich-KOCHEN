@@ -14,10 +14,10 @@ public class Clock : MonoBehaviour
         while(GameManager.instance.gameIsActive){
            
             if(clock == 4.00f){
-                Debug.Log("Zeit aus");
                 
+                EventManager.instance.TimesUp();
             }
-             
+
             else{
                 
                 if(clock == 23){

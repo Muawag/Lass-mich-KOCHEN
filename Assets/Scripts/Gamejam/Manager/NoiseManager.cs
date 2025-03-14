@@ -4,7 +4,9 @@ using UnityEngine;
 public class NoiseManager : MonoBehaviour
 {
     public float noise;
-
+    private void Start() {
+        EventManager.instance.MakeNoiseEvent += addNoise;
+    }
     IEnumerator noiseCheck(){
         while(GameManager.instance.gameIsActive){
             if(noise > 0){
@@ -12,9 +14,12 @@ public class NoiseManager : MonoBehaviour
                 noise -= 1;
             }
             if(noise >= 100){
-                Debug.Log("Alarm");
+                noise = 100;
+                EventManager.instance.Alarm();
             }
         }
     } 
-    
+    private void addNoise(object sender, NoiseEvent e){
+        noise += e.noise;
+    } 
 }

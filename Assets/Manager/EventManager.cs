@@ -9,6 +9,9 @@ public class EventManager : MonoBehaviour
     public EventHandler<InteractEventArgs> OnInteract;
     public EventHandler<NoiseEvent> MakeNoiseEvent;
     public EventHandler<DestroyEvent> ObjectDestroyedEvent;
+    public EventHandler<EventArgs> AlarmEvent;
+    public EventHandler<EventArgs> TimesUpEvent;
+    
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -30,4 +33,11 @@ public class EventManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(toDestroy);
     }
+    public void TimesUp(){
+        TimesUpEvent?.Invoke(this,EventArgs.Empty);
+    }
+    public void Alarm(){
+        AlarmEvent?.Invoke(this,EventArgs.Empty);
+    }
+    
 }
