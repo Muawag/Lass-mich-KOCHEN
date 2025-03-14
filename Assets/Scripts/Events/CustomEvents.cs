@@ -5,6 +5,9 @@ using UnityEngine;
 public class InteractEventArgs : EventArgs {
     public IInteractable interactable; 
 }
-public class SoundEvent : EventArgs {
-    public float value;
+public class NoiseEvent : EventArgs {
+    public float noise;
+}
+public class DestroyEvent : EventArgs {
+    public float money;
 }

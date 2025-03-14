@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class DestryableItem : MonoBehaviour
 {
     [SerializeField] private float hp;
-    [SerializeField] 
+    [SerializeField] private float noisevolume;
+    [SerializeField] private float money;
+    
     void Start()
     {
         
@@ -17,12 +20,13 @@ public class DestryableItem : MonoBehaviour
 
     public void DestroyObject()
     {
-        
+        //ParticleSystem ka was da passiert
+        EventManager.instance.ObjectDestroyed(money, gameObject);
     }
 
     public void Damage(float value) {
         hp -= value;
-        
+        EventManager.instance.MakeNoise(noisevolume);
         if(value <= hp) {
             DestroyObject();
         }

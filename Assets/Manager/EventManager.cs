@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -6,6 +7,8 @@ public class EventManager : MonoBehaviour
 {
     public static EventManager instance;
     public EventHandler<InteractEventArgs> OnInteract;
+    public EventHandler<NoiseEvent> MakeNoiseEvent;
+    public EventHandler<DestroyEvent> ObjectDestroyedEvent;
     private void Awake() {
         if(instance == null) {
             instance = this;
@@ -16,5 +19,15 @@ public class EventManager : MonoBehaviour
     }
     public void Interact(IInteractable interactable) {
         OnInteract?.Invoke(this, new InteractEventArgs {interactable = interactable});
+    }
+    public void MakeNoise(float noiseVolume) {
+        MakeNoiseEvent?.Invoke(this, new NoiseEvent{noise = noiseVolume});
+    }
+    public void ObjectDestroyed(float value, GameObject gobject) {
+        ObjectDestroyedEvent?.Invoke(this, new DestroyEvent{money = value});
+    }
+    IEnumerator DestroyAfter(GameObject toDestroy) {
+        yield return new WaitForSeconds(1f);
+        Destroy(toDestroy);
     }
 }
