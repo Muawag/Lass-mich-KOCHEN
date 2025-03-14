@@ -14,4 +14,8 @@ public class TestInteract : MonoBehaviour, IInteractable
     void Start() {
         EventManager.instance.OnInteract += OnInteract;
     }
+    private void OnTriggerStay(Collider other)
+    {
+        Debug.Log("Ich gebe mir die kugel");
+    }
 }
