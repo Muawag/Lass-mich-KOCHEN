@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    public GameObject GroundCheck;
     public Vector3 forceDirection = Vector3.zero;
     private PlayerInput input;
     private Rigidbody rb;
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
         }
     }
     private bool Grounded() {
-        return true;
+        return Physics.Raycast(transform.position,transform.TransformDirection(Vector3.down),1f);
     }
     private void Sprint(InputAction.CallbackContext context) {
         if(context.started) {
