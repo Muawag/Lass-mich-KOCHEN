@@ -14,6 +14,8 @@ public class EventManager : MonoBehaviour
     public EventHandler<EventArgs> AlarmEvent;
     public EventHandler<EventArgs> TimesUpEvent;
     public EventHandler<DamageEventArgs> DamageObjectEvent;
+    public EventHandler<WeaponAddEventArgs> AddWeaponEvent;
+    public EventHandler<ConsumeableAddEventArgs> AddConsumeableEvent;
     
     private void Awake() {
         if(instance == null) {

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private float interactDistance;
     private Inventar inventar;
+    private bool canAttack = true;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -75,7 +77,6 @@ public class Player : MonoBehaviour
     }
     private void Drop(InputAction.CallbackContext context) {
         if(context.performed) {
-            inventar.Drop();
         }
     }
     private void Jump(InputAction.CallbackContext context) {
@@ -97,13 +98,20 @@ public class Player : MonoBehaviour
         }
     }
     private void Use(InputAction.CallbackContext context) {
-        if(context.performed) {
+        if(context.performed && canAttack) {
             if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
                 if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem interact)) {
                     Debug.Log("AGGGGGGGGG");
+                    StartCoroutine(DelayAttack());
                     EventManager.instance.DamageObject(interact, 20f);
                 }
             }
         }
+    }
+    IEnumerator DelayAttack() {
+        canAttack = false;
+        yield return new WaitForSeconds(1f);
+        canAttack = true;
+        
     }
 }
