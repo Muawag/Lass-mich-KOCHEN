@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
                 if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem interact)) {
                     Debug.Log("AGGGGGGGGG");
                     StartCoroutine(DelayAttack());
-                    EventManager.instance.DamageObject(interact, 20f);
+                    EventManager.instance.DamageObject(interact, inventar.GetDamage());
                 }
             }
         }
