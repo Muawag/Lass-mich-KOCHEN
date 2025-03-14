@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class EventManager : MonoBehaviour
 {
+    public EventHandler<EventArgs> EscapedEvent;
+    public EventHandler<EventArgs> NewNightEvent;
     public static EventManager instance;
     public EventHandler<InteractEventArgs> OnInteract;
     public EventHandler<NoiseEvent> MakeNoiseEvent;
@@ -43,5 +45,10 @@ public class EventManager : MonoBehaviour
     public void Alarm(){
         AlarmEvent?.Invoke(this,EventArgs.Empty);
     }
-    
+    public void NewNight(){
+        NewNightEvent?.Invoke(this, EventArgs.Empty);
+    }
+    public void Escaped(){
+        EscapedEvent?.Invoke(this, EventArgs.Empty);
+    }
 }
