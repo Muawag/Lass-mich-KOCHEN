@@ -4,7 +4,7 @@ using UnityEngine;
 public class NoiseManager : MonoBehaviour
 {
     public float noise;
-
+    
     void Update() {
         //this.GetComponent<ManagerUI>().UpdateUI(noise, 100f);
     }

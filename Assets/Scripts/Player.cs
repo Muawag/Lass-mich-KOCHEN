@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    private EventInstance PlayerFootsteps;
+    
     public GameObject GroundCheck;
     public Vector3 forceDirection = Vector3.zero;
     private PlayerInput input;
@@ -18,11 +18,10 @@ public class Player : MonoBehaviour
     private Inventar inventar;
     private bool canAttack = true;
     private float scrollchange;
-    private bool fspielen = false;
+   
     void Start()
     {
-        PlayerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerFootsteps, gameObject.transform);
-
+        
         rb = GetComponent<Rigidbody>();
         input = new PlayerInput();
         HandleInput();
@@ -81,7 +80,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate() {
         Move();
-        UpdateSound();
+        
     }
     private void Drop(InputAction.CallbackContext context) {
         if(context.performed) {
@@ -93,7 +92,7 @@ public class Player : MonoBehaviour
             AudioManager.instance.PlayOneShot(FMODEvents.instance.JumpSound, transform.position);
         }
     }
-    private bool Grounded() {
+    public bool Grounded() {
         return Physics.Raycast(transform.position,transform.TransformDirection(Vector3.down),1.5f);
     }
     private void Sprint(InputAction.CallbackContext context) {
@@ -153,22 +152,7 @@ public class Player : MonoBehaviour
             inventar.SetInvIndex(1);
         }
     }
-    private void UpdateSound(){
-        if(Grounded()){
-            Debug.Log("Laufen");
-            PLAYBACK_STATE playbackState;
-            PlayerFootsteps.getPlaybackState(out playbackState);
-            PlayerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
-            if(playbackState.Equals(PLAYBACK_STATE.STOPPED)){
-                Debug.Log("Spielen");
-                PlayerFootsteps.start();
-            }
-        }
-       else{
-            PlayerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
-       }
-        
-}
+    
 }
 
 
