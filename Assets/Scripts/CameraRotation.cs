@@ -21,7 +21,7 @@ public class CameraRotation : MonoBehaviour
         }
     }
     void Start() {
-        LockCursor();
+        //LockCursor();
     }
     private void Update() {
         ApplyRotaion();
