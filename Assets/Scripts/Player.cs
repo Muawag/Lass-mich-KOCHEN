@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         input = new PlayerInput();
         HandleInput();
         inventar = GetComponent<Inventar>();
+        EventManager.instance.GameOverEvent += (sender, e) => {input.Player.Disable();transform.rotation = Quaternion.identity;};
     }
     void Update()
     {
@@ -165,7 +166,7 @@ public class Player : MonoBehaviour
         }
     }
     private void SearchForOutline() {
-         if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
+         if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance) && !inventar.ThrowColl()) {
                 if(hit.transform.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable)) {
                     if(tempInteractable != interactable) {
                         if(tempInteractable == null) {
@@ -179,6 +180,14 @@ public class Player : MonoBehaviour
                         }
                     }
                 }
+                else if(tempInteractable != null){
+                EventManager.instance.UpdateOutline(tempInteractable, false);
+                tempInteractable = null;
+         }
+         }
+         else if(tempInteractable != null){
+            EventManager.instance.UpdateOutline(tempInteractable, false);
+            tempInteractable = null;
          }
     }
 }

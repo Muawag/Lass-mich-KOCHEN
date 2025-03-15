@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     }
     public void gameover(){
         if(!hasEscaped){
+            EventManager.instance.GameOver();
             player.GetComponent<AudioPlayer>().playGameOverSound();
             Screen.Setup(false);
         }

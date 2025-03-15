@@ -25,6 +25,7 @@ public class EventManager : MonoBehaviour
     public EventHandler<GameobjectSendEventArgs> ThrowablePickedUpEvent;
     public EventHandler<ConsumeableUseEventArgs> RemoveConFromInvEvent;
     public EventHandler<OutlineUpdateEventArgs> UpdateOutlineEvent;
+    public EventHandler<EventArgs> GameOverEvent;
 
     
     private void Awake() {
@@ -62,6 +63,7 @@ public class EventManager : MonoBehaviour
     }
     public void Escaped(){
         EscapedEvent?.Invoke(this, EventArgs.Empty);
+        GameOverEvent?.Invoke(this, EventArgs.Empty);
     }
     public void AddWeapon(WeaponTypes wtype) {
         AddWeaponEvent?.Invoke(this, new WeaponAddEventArgs {type = wtype});
@@ -96,6 +98,9 @@ public class EventManager : MonoBehaviour
     }
     public void UpdateOutline(IInteractable interactable, bool flag) {
         UpdateOutlineEvent?.Invoke(this, new OutlineUpdateEventArgs{interactable = interactable, flag = flag});
+    }
+    public void GameOver() {
+        GameOverEvent?.Invoke(this, EventArgs.Empty);
     }
 
 }
