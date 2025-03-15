@@ -16,7 +16,6 @@ public class OtherAudio : MonoBehaviour
         ToLoudSoundPlayed = false;
         BurnSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.BurningSound, player.gameObject.transform);
         EventManager.instance.BurningThingEvent += StartBurning;
-        EventManager.instance.FireEndedEvent += FireEnded;
         EventManager.instance.ObjectDestroyedEvent += BreakSounds;
     }
     void FixedUpdate()
@@ -28,6 +27,7 @@ public class OtherAudio : MonoBehaviour
     }
     void StartBurning(object sender, PosEventArgs e) {
         Vector3 postemp = e.pos;
+        Debug.Log("gadwgi");
         sounds.Add(AudioManager.instance.CreateEventInstance(FMODEvents.instance.BurningSound, player.gameObject.transform));
         
     }
@@ -44,8 +44,5 @@ public class OtherAudio : MonoBehaviour
         else if(e.type == DestroyType.Plate){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.PlateBreak, e.pos);
         }
-    }
-    void FireEnded(object sender, PosEventArgs e) {
-
     }
 }

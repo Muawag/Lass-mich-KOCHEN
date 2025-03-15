@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance {get; private set;}
-    private List<StudioEventEmitter> eventemitters;
+    public List<StudioEventEmitter> eventemitters;
 
     private void Awake() {
         if(instance == null) {
@@ -26,6 +26,7 @@ public class AudioManager : MonoBehaviour
         return eventInstance;
     }
     public StudioEventEmitter InitializeEventEmitters(EventReference reference, GameObject eGameObject) {
+        Debug.Log("Neyscha");
         StudioEventEmitter emitter = eGameObject.GetComponent<StudioEventEmitter>();
         emitter.EventReference = reference;
         eventemitters.Add(emitter);

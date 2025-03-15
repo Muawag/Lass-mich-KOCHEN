@@ -27,7 +27,7 @@ public class Clock : MonoBehaviour
                     clock += 1f;
                 }
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(10);
         }
     
     }

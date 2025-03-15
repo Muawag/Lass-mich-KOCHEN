@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(Outline))]
@@ -7,6 +8,8 @@ public class Plate : DestryableItem, IThrowable, IInteractable
     [SerializeField] Camera cam;
     private bool thrown = false;
     private Outline outline;
+    private bool hit = false;
+
     public void OnInteract(object sender, InteractEventArgs e)
     {
         if(e.interactable.Equals(this)) {
@@ -49,9 +52,12 @@ public class Plate : DestryableItem, IThrowable, IInteractable
                     item.DestroyObject();
                 }
             }
+            if(hit == false) {
+            hit = true;
             EventManager.instance.MakeNoise(noisevolume);
             Debug.Log("Zerbrochen");
             DestroyObject();
+            }
         }
     }
 

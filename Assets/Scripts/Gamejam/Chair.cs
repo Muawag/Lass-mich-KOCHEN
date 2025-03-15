@@ -15,22 +15,29 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     private bool thrown = false;
     private Outline outline;
     private bool hit = false;
-    
+    int partindex;
+    private bool isburning = false;
     public void Burn()
     {
+        if(!isburning) {
+        isburning = true;
+        Debug.Log("Jetzt");
         StartCoroutine(HandleBurn());
+        }
     }
 
     public IEnumerator HandleBurn()
     {
         Debug.Log("Soundd in mich rein");
-        //EventManager.instance.BurnStuff(transform.position);
+        FireHandler.instance.PlaceParticleSystem(transform,transform.position, 20);
+        EventManager.instance.BurnStuff(transform.position);
         emitter.Play();
         while(hp > 0f) {
             hp-= 10f;
             yield return new WaitForSeconds(1f);
         }
         if(hp <= 0f) {
+            emitter.Stop();
             EventManager.instance.FireEnded(transform.position);
             DestroyObject();
         }
@@ -72,16 +79,19 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(thrown && collision.transform.tag != "Player" && !hit) {
-            hit = true;
+        if(thrown && collision.transform.tag != "Player") {
+            
             if(collision.gameObject.TryGetComponent<DestryableItem>(out DestryableItem item)) {
                 if(this.value >= item.GetValue()) {
                     item.DestroyObject();
                 }
             }
+            if(hit == false) {
+            hit = true;
             EventManager.instance.MakeNoise(noisevolume);
             Debug.Log("Zerbrochen");
             DestroyObject();
+            }
         }
     }
 
