@@ -9,6 +9,7 @@ public class AudioPlayer : MonoBehaviour
    
     void Start()
     {
+        EventManager.instance.MolotovThrownEvent += playMolotovSound;
         PlayerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerFootsteps, gameObject.transform);
         PlayerSprintFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerSprintFootsteps, gameObject.transform);
         playerRb = player.GetComponent<Player>().rb;
@@ -50,5 +51,9 @@ public class AudioPlayer : MonoBehaviour
             PlayerSprintFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
        }
         
-}
+    }
+    public void playMolotovSound(object sender, PosEventArgs e){
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.MolotovThrow, e.pos);
+        
+    }
 }

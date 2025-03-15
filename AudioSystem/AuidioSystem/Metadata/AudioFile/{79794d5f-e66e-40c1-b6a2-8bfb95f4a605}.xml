@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{79794d5f-e66e-40c1-b6a2-8bfb95f4a605}">
+		<property name="assetPath">
+			<value>glass-bottle-smash-277554.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.1600000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{ccbb1eb9-94d3-4169-96e8-bbc358f23128}</destination>
+		</relationship>
+	</object>
+</objects>
