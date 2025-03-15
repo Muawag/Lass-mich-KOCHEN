@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class NoiseManager : MonoBehaviour
 {
     public static NoiseManager instance {get; private set;}
-
+    public GameObject player;
     private void Awake() {
         if(instance == null) {
             instance = this;

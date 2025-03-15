@@ -36,10 +36,11 @@ public class AudioPlayer : MonoBehaviour
             PLAYBACK_STATE playbackState2;
             PlayerSprintFootsteps.getPlaybackState(out playbackState2);
             PlayerSprintFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            EventManager.instance.MakeNoise(2);
             if(playbackState2.Equals(PLAYBACK_STATE.STOPPED)){
                 
                 PlayerSprintFootsteps.start();
-                Debug.Log("sprintsounds");
+                
             }
         }
        
