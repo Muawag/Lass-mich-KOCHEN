@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
         input = new PlayerInput();
         HandleInput();
         inventar = GetComponent<Inventar>();
+        EventManager.instance.GameOverEvent += (sender, e) => {input.Player.Disable();transform.rotation = Quaternion.identity;};
     }
     void Update()
     {
