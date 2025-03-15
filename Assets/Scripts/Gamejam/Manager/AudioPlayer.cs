@@ -24,7 +24,7 @@ public class AudioPlayer : MonoBehaviour
         UpdateSound();
     }
     private void UpdateSound(){
-        if(player.GetComponent<Player>().isSprinting == false && player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.01f||Mathf.Abs(playerRb.linearVelocity.z) > 0.01f)){
+        if(player.GetComponent<Player>().isSprinting == false && player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.1f||Mathf.Abs(playerRb.linearVelocity.z) > 0.1f)){
             
             PlayerSprintFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
             PLAYBACK_STATE playbackState1;
