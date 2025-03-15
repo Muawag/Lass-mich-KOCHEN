@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Chair : DestryableItem, IBurnable
 {
@@ -10,6 +11,7 @@ public class Chair : DestryableItem, IBurnable
 
     public IEnumerator HandleBurn()
     {
+        EventManager.instance.BurnStuff(transform.position);
         while(hp > 0f) {
             hp-= 10f;
             yield return new WaitForSeconds(1f);
