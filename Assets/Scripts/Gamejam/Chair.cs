@@ -11,6 +11,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     private StudioEventEmitter emitter;
     private Rigidbody rb;
     [SerializeField] Camera cam;
+    [SerializeField] Transform burnPos;
     
     private bool thrown = false;
     private Outline outline;
@@ -29,7 +30,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     public IEnumerator HandleBurn()
     {
         Debug.Log("Soundd in mich rein");
-        FireHandler.instance.PlaceParticleSystem(transform,transform.position, 20);
+        FireHandler.instance.PlaceParticleSystem(transform,burnPos.position, 20);
         EventManager.instance.BurnStuff(transform.position);
         emitter.Play();
         while(hp > 0f) {
