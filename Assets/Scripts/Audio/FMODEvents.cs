@@ -5,7 +5,7 @@ public class FMODEvents : MonoBehaviour
 {
     [field: Header("Player SFX")]
     [field: SerializeField] public EventReference PlayerFootsteps {get; private set;}
-
+    [field: SerializeField] public EventReference PlayerSprintFootsteps {get; private set;}
     [field: Header("Jump Sound")]
     [field: SerializeField] public EventReference JumpSound {get; private set;}
 

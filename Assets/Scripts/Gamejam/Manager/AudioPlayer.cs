@@ -4,11 +4,13 @@ public class AudioPlayer : MonoBehaviour
 {
     public GameObject player;
     private EventInstance PlayerFootsteps;
+    private EventInstance PlayerSprintFootsteps;
     public Rigidbody playerRb;
    
     void Start()
     {
         PlayerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerFootsteps, gameObject.transform);
+        PlayerSprintFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerSprintFootsteps, gameObject.transform);
         playerRb = player.GetComponent<Player>().rb;
         
     }
@@ -17,18 +19,34 @@ public class AudioPlayer : MonoBehaviour
         UpdateSound();
     }
     private void UpdateSound(){
-        if(player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.01f||Mathf.Abs(playerRb.linearVelocity.z) > 0.01f)){
+        if(player.GetComponent<Player>().isSprinting == false && player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.01f||Mathf.Abs(playerRb.linearVelocity.z) > 0.01f)){
             
-            PLAYBACK_STATE playbackState;
-            PlayerFootsteps.getPlaybackState(out playbackState);
+            PlayerSprintFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            PLAYBACK_STATE playbackState1;
+            PlayerFootsteps.getPlaybackState(out playbackState1);
             PlayerFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
-            if(playbackState.Equals(PLAYBACK_STATE.STOPPED)){
+            if(playbackState1.Equals(PLAYBACK_STATE.STOPPED)){
                 
                 PlayerFootsteps.start();
             }
         }
+       else if(player.GetComponent<Player>().isSprinting && player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.01f||Mathf.Abs(playerRb.linearVelocity.z) > 0.01f)){
+            
+            PlayerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            PLAYBACK_STATE playbackState2;
+            PlayerSprintFootsteps.getPlaybackState(out playbackState2);
+            PlayerSprintFootsteps.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(transform));
+            if(playbackState2.Equals(PLAYBACK_STATE.STOPPED)){
+                
+                PlayerSprintFootsteps.start();
+                Debug.Log("sprintsounds");
+            }
+        }
+       
+       
        else{
             PlayerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
+            PlayerSprintFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
        }
         
 }
