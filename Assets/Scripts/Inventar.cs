@@ -42,10 +42,15 @@ public class Inventar : MonoBehaviour
     public void SetInvIndex(int i) {
         invTypeSel = i;
         if(invTypeSel == 1) {
+            //Debug.Log("1");
+            Debug.Log(GetConsumeable().ToString());
             EventManager.instance.AddConsToInv(GetConsumeable());
+            weapon.RemoveFromPlayer();
         }
         else if(invTypeSel == 0) {
+            Debug.Log("2");
             EventManager.instance.AddConsToInv(null);
+            weapon.AddToPlayer();
         }
     }
     public Consumeable GetConsumeable() {
@@ -53,7 +58,7 @@ public class Inventar : MonoBehaviour
             return null;
         }
         else {
-        return consumeables[invTypeSel];
+        return consumeables[consumeableIndex];
         }
     }
 }
