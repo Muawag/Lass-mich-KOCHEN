@@ -1003,6 +1003,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 13082938674157496, guid: 669bd60cc567488429ffa49e387dced4, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4846162693069179361, guid: 669bd60cc567488429ffa49e387dced4, type: 3}
       propertyPath: m_Name
       value: Canvas_PlayerUI

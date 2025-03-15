@@ -62,9 +62,9 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(thrown) {
+        if(thrown && collision.transform.tag != "Player") {
             if(collision.gameObject.TryGetComponent<DestryableItem>(out DestryableItem item)) {
-                if(this.value > item.GetValue()) {
+                if(this.value >= item.GetValue()) {
                     item.DestroyObject();
                 }
             }
