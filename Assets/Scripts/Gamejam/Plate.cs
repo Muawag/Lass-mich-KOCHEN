@@ -1,41 +1,16 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using FMODUnity;
 
-[RequireComponent(typeof(StudioEventEmitter))]
-public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
+public class Plate : DestryableItem, IThrowable, IInteractable
 {
-    private StudioEventEmitter emitter;
     private Rigidbody rb;
     [SerializeField] Camera cam;
     [SerializeField] Collider col;
     private bool thrown = false;
-    public void Burn()
-    {
-        StartCoroutine(HandleBurn());
-    }
-
-    public IEnumerator HandleBurn()
-    {
-        Debug.Log("Soundd in mich rein");
-        //EventManager.instance.BurnStuff(transform.position);
-        emitter.Play();
-        while(hp > 0f) {
-            hp-= 10f;
-            yield return new WaitForSeconds(1f);
-        }
-        if(hp <= 0f) {
-            EventManager.instance.FireEnded(transform.position);
-            DestroyObject();
-        }
-    }
-
     public void OnInteract(object sender, InteractEventArgs e)
     {
         if(e.interactable.Equals(this)) {
             EventManager.instance.ThrowablePickedUp(gameObject);
-            Debug.Log("Aufheben Stuhl");
+            Debug.Log("Aufheben Teller");
         }
     }
 
@@ -47,11 +22,11 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Atstart();
+         Atstart();
         rb = GetComponent<Rigidbody>();
-        emitter = AudioManager.instance.InitializeEventEmitters(FMODEvents.instance.BurningSound, this.gameObject);
         EventManager.instance.OnInteract += OnInteract;
     }
+
     private void Yeet() {
         transform.SetParent(null);
         rb.useGravity = true;
@@ -73,6 +48,5 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
             DestroyObject();
         }
     }
-
 
 }
