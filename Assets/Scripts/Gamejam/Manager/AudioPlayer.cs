@@ -18,6 +18,9 @@ public class AudioPlayer : MonoBehaviour
     }
     void FixedUpdate()
     {
+        /*if(Input.GetKeyDown(KeyCode.J)){
+            playKloppSound();
+        }*/
         UpdateSound();
     }
     private void UpdateSound(){
@@ -64,4 +67,8 @@ public class AudioPlayer : MonoBehaviour
     public void playSuccesSound(){
         AudioManager.instance.PlayOneShot(FMODEvents.instance.Success, transform.position);
     }
+    public void playKloppSound(){
+         AudioManager.instance.PlayOneShot(FMODEvents.instance.Kloppen, transform.position);
+    }
+    
 }

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{8e41708e-11b7-4665-90a3-6c2467a1f23c}">
+	<object class="AudioFile" id="{938e7fdd-27b7-4d4f-9f55-7c6ee9149a7b}">
 		<property name="assetPath">
-			<value>success-fanfare-trumpets-6185.mp3</value>
+			<value>kloppSound.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>24</value>
+			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>3.9119999999999999</value>
+			<value>0.75755102040816324</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{ccbb1eb9-94d3-4169-96e8-bbc358f23128}</destination>
