@@ -1379,6 +1379,13 @@ MonoBehaviour:
       Data3: 270956161
       Data4: -1568386779
     Path: event:/PlayerFootstep
+  <PlayerSprintFootsteps>k__BackingField:
+    Guid:
+      Data1: -1206890402
+      Data2: 1252923632
+      Data3: -806916698
+      Data4: 2095601074
+    Path: event:/PlayerSprintFootstep
   <JumpSound>k__BackingField:
     Guid:
       Data1: -891126622

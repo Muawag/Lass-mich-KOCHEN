@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Molotov : Consumeable
@@ -7,6 +8,7 @@ public class Molotov : Consumeable
     [SerializeField] LayerMask targetMask;
     private Collider col;
     public Collider[] colliders;
+    private bool activatetd = false;
     void Start()
     {
         Atstart();
@@ -30,15 +32,22 @@ public class Molotov : Consumeable
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.transform.tag != "Player") {
+        if(collision.transform.tag != "Player" && !activatetd) {
         Debug.Log("Burn");
+        activatetd = true;
         colliders = Physics.OverlapSphere(transform.position, 5f, targetMask);
         foreach (Collider item in colliders)
         {
             item.gameObject.GetComponent<IBurnable>().Burn();
         }
-            Destroy(gameObject);
+            StartCoroutine(HandleDestroy());
         }
         //
+    }
+    IEnumerator HandleDestroy() {
+        yield return new WaitForSeconds(1.5f);
+        EventManager.instance.MakeNoise(noise);
+        Destroy(gameObject);
+        //bombardino crocodilo
     }
 }
