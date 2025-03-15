@@ -6,7 +6,7 @@ public class NoiseManager : MonoBehaviour
     public float noise;
 
     void Update() {
-        this.GetComponent<ManagerUI>().UpdateUI(noise, 100f);
+        //this.GetComponent<ManagerUI>().UpdateUI(noise, 100f);
     }
     private void Start() {
         EventManager.instance.MakeNoiseEvent += addNoise;
