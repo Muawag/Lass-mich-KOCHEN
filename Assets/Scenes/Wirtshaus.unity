@@ -503,8 +503,8 @@ MonoBehaviour:
   uses: 1
   type: 0
   noise: 30
-  holder: {fileID: 0}
-  awayPos: {fileID: 0}
+  holder: {fileID: 208145623}
+  awayPos: {fileID: 1326979821}
   cam: {fileID: 1360194412}
 --- !u!1 &632613074
 GameObject:
@@ -628,6 +628,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2952369852818702335, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 2004111303}
+    - target: {fileID: 2952369852818702335, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
+      propertyPath: consumeables.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2952369852818702335, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
+      propertyPath: 'consumeables.Array.data[0]'
+      value: 
+      objectReference: {fileID: 573468422}
     - target: {fileID: 6221988351063842459, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.83
@@ -1099,7 +1111,7 @@ MonoBehaviour:
   inventar: {fileID: 559876510}
   axe: {fileID: 1762656455}
   crowbar: {fileID: 2004111303}
-  molotov: {fileID: 0}
+  molotov: {fileID: 573468422}
   graffiti: {fileID: 0}
 --- !u!114 &1928418745
 MonoBehaviour:
