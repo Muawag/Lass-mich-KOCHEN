@@ -6,7 +6,11 @@ public class Inventar : MonoBehaviour
     [SerializeField] ConsumeableType consumeable;
 
     public void AddWeapon(Weapon type) {
+        if(weapon != null) {
+        weapon.RemoveFromPlayer();
+        }
         weapon = type;
+        weapon.AddToPlayer();
     }
     public void AddConsumeable(ConsumeableType type) {
         consumeable = type;
