@@ -39,8 +39,8 @@ public class NoiseManager : MonoBehaviour
             noise -= Time.deltaTime * 2f;
         }
 
-        if(noise >= 100f){
-            noise = 100f;
+        if(noise >= 100f && noise <200f){
+            noise = 200f;
             EventManager.instance.Alarm();
         }
     }
