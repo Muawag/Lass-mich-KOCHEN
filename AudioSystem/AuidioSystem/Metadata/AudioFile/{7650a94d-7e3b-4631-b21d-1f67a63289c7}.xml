@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{8c860bfa-1314-442a-9d05-14a92df26a4b}">
+	<object class="AudioFile" id="{7650a94d-7e3b-4631-b21d-1f67a63289c7}">
 		<property name="assetPath">
-			<value>Footstep1.mp3</value>
+			<value>GlasBreak.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>44.0999985</value>
+			<value>48</value>
 		</property>
 		<property name="channelCount">
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.47020408163265304</value>
+			<value>0.79200000000000004</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{ccbb1eb9-94d3-4169-96e8-bbc358f23128}</destination>

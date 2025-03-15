@@ -13,9 +13,12 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference Kloppen {get; private set;}
     [field: Header("Other Audio")]
     
+    [field: SerializeField] public EventReference ChairBreak {get; private set;}
+    [field: SerializeField] public EventReference GlasBreak {get; private set;}
     [field: SerializeField] public EventReference ToLoud {get; private set;}
     [field: SerializeField] public EventReference BurningSound {get; private set;}
-    
+    [field: SerializeField] public EventReference TableBreak {get; private set;}
+    [field: SerializeField] public EventReference PlateBreak {get; private set;}
     public static FMODEvents instance { get; private set;}
 
     private void Awake() {
