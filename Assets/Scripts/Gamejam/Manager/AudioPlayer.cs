@@ -4,17 +4,20 @@ public class AudioPlayer : MonoBehaviour
 {
     public GameObject player;
     private EventInstance PlayerFootsteps;
+    public Rigidbody playerRb;
+   
     void Start()
     {
         PlayerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerFootsteps, gameObject.transform);
-
+        playerRb = player.GetComponent<Player>().rb;
+        
     }
     void FixedUpdate()
     {
         UpdateSound();
     }
     private void UpdateSound(){
-        if(player.GetComponent<Player>().Grounded()){
+        if(player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.01f||Mathf.Abs(playerRb.linearVelocity.z) > 0.01f)){
             
             PLAYBACK_STATE playbackState;
             PlayerFootsteps.getPlaybackState(out playbackState);

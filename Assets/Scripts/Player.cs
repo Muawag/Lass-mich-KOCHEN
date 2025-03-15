@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameObject GroundCheck;
     public Vector3 forceDirection = Vector3.zero;
     private PlayerInput input;
-    private Rigidbody rb;
+    public Rigidbody rb;
     public float movementForce = 2.0f;
     public float maxSpeed = 0.5f;
     [SerializeField] private Camera cam;
