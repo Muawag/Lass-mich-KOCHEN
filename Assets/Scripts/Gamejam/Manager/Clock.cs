@@ -7,7 +7,7 @@ public class Clock : MonoBehaviour
     public float clock;
     public void Start()
     {
-        clock = 23.00f;
+        clock = 22.00f;
         StartCoroutine(Time());
     }
     IEnumerator Time (){
