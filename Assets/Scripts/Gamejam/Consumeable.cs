@@ -10,7 +10,7 @@ public class Consumeable : MonoBehaviour
     public virtual void Use(object sender, ConsumeableUseEventArgs e) {
        
     }
-    private void Awake()
+    private void Start()
     {
         EventManager.instance.UseConsumeableEvent += Use;
         EventManager.instance.AddConsumeableEvent += UpdatePos;

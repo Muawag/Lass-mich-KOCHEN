@@ -1,10 +1,12 @@
 using System.Collections;
+using FMOD.Studio;
 using Mono.CSharp;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    
     public GameObject GroundCheck;
     public Vector3 forceDirection = Vector3.zero;
     private PlayerInput input;
@@ -16,8 +18,10 @@ public class Player : MonoBehaviour
     private Inventar inventar;
     private bool canAttack = true;
     private float scrollchange;
+   
     void Start()
     {
+        
         rb = GetComponent<Rigidbody>();
         input = new PlayerInput();
         HandleInput();
@@ -26,6 +30,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleScrollChange();
+        
     }
     void HandleInput() {
         input.Player.Enable();
@@ -47,11 +52,6 @@ public class Player : MonoBehaviour
                 }
             }
 
-        }
-    }
-    private void AudioTest() {
-        if(Input.GetKeyDown(KeyCode.A)) {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.testSFX, transform.position);
         }
     }
     private void Move() {
@@ -80,9 +80,7 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate() {
         Move();
-        if(Input.GetKeyDown(KeyCode.L)){
-            //AudioManager.instance.PlayOneShot(FMODEvents.instance.punch, transform.position);
-        }
+        
     }
     private void Drop(InputAction.CallbackContext context) {
         if(context.performed) {
@@ -91,10 +89,11 @@ public class Player : MonoBehaviour
     private void Jump(InputAction.CallbackContext context) {
         if(Grounded() && context.performed) {
             rb.AddForce(Vector3.up * movementForce *5f, ForceMode.Impulse);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.JumpSound, transform.position);
         }
     }
-    private bool Grounded() {
-        return Physics.Raycast(transform.position,transform.TransformDirection(Vector3.down),1f);
+    public bool Grounded() {
+        return Physics.Raycast(transform.position,transform.TransformDirection(Vector3.down),1.5f);
     }
     private void Sprint(InputAction.CallbackContext context) {
         if(context.started) {
@@ -153,7 +152,7 @@ public class Player : MonoBehaviour
             inventar.SetInvIndex(1);
         }
     }
-        
+    
 }
 
 

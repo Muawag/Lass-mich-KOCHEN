@@ -45,10 +45,15 @@ public class Inventar : MonoBehaviour
             EventManager.instance.AddConsToInv(GetConsumeable());
         }
         else if(invTypeSel == 0) {
-            
+            EventManager.instance.AddConsToInv(null);
         }
     }
     public Consumeable GetConsumeable() {
+        if(consumeables.Count == 0) {
+            return null;
+        }
+        else {
         return consumeables[invTypeSel];
+        }
     }
 }
