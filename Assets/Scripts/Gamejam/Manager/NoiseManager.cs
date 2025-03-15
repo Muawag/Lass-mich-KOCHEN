@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NoiseManager : MonoBehaviour
 {
@@ -26,10 +27,13 @@ public class NoiseManager : MonoBehaviour
     void Update() {
         manager.UpdateUI(noise, 100f);
         UpdateNoise();
+        if(Input.GetKeyDown(KeyCode.P)) {
+            noise = 105;
+        }
     }
 
     public void UpdateNoise() {
-        if(noise > 0) {
+        if(noise > 0 && noise < 100) {
             noise -= Time.deltaTime * 2f;
         }
 
