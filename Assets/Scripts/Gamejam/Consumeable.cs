@@ -12,8 +12,7 @@ public class Consumeable : MonoBehaviour
     }
     private void Start()
     {
-        EventManager.instance.UseConsumeableEvent += Use;
-        EventManager.instance.AddConsumeableEvent += UpdatePos;
+        
     }
     private void UpdatePos(object sender, ConsumeableUseEventArgs e) {
         Debug.Log("Rein");
@@ -27,4 +26,9 @@ public class Consumeable : MonoBehaviour
             transform.position = awayPos.transform.position;
         } 
     }
+        protected void Atstart() {
+        EventManager.instance.UseConsumeableEvent += Use;
+        EventManager.instance.AddConsumeableEvent += UpdatePos;
+        }
+    
 }

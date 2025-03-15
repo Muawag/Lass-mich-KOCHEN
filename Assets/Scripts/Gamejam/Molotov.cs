@@ -4,9 +4,12 @@ public class Molotov : Consumeable
 {
     private Rigidbody rb;
     [SerializeField] Camera cam;
+    private Collider col;
     void Start()
     {
+        Atstart();
         rb = GetComponent<Rigidbody>();
+        col = GetComponentInChildren<Collider>();
     }
     public override void Use(object sender, ConsumeableUseEventArgs e)
     {
@@ -19,6 +22,7 @@ public class Molotov : Consumeable
         transform.SetParent(null);
         rb.useGravity = true;
         rb.isKinematic = false;
-        rb.AddForce((transform.forward + cam.transform.forward) *5, ForceMode.Impulse);
+        col.enabled = true;
+        rb.AddForce((transform.forward + cam.transform.forward) *10, ForceMode.Impulse);
     }
 }

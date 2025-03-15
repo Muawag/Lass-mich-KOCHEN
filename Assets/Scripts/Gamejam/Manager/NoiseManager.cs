@@ -18,13 +18,13 @@ public class NoiseManager : MonoBehaviour
     private ManagerUI manager;
 
     private void Start() {
-        //manager = this.GetComponent<ManagerUI>();
+        manager = this.GetComponent<ManagerUI>();
         EventManager.instance.MakeNoiseEvent += addNoise;
         //StartCoroutine(noiseCheck());
     }
     
     void Update() {
-        //manager.UpdateUI(noise, 100f);
+        manager.UpdateUI(noise, 100f);
         UpdateNoise();
     }
 
