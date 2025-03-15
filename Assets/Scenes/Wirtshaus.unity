@@ -414,6 +414,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonRigidbodyVelocity: 0
   attenuationObject: {fileID: 559876509}
+--- !u!114 &559876519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559876509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace9f39a9418a954283ca8a6538dfbbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 559876509}
 --- !u!1 &573468419
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,6 +678,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 474338250450736321, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 559876518}
+    - targetCorrespondingSourceObject: {fileID: 474338250450736321, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 559876519}
   m_SourcePrefab: {fileID: 100100000, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
 --- !u!1 &1326979821
 GameObject:
