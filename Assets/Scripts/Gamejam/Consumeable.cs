@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Consumeable : MonoBehaviour
@@ -20,15 +21,16 @@ public class Consumeable : MonoBehaviour
             transform.position = holder.transform.position;
             transform.rotation = holder.transform.rotation;
             transform.SetParent(holder.transform);
-        }
-        else {
-            transform.SetParent(null);
-            transform.position = awayPos.transform.position;
         } 
     }
         protected void Atstart() {
         EventManager.instance.UseConsumeableEvent += Use;
         EventManager.instance.AddConsumeableEvent += UpdatePos;
+        EventManager.instance.SwitchToWeaponEvent += SwitchToWeapon;
+        }
+        private void SwitchToWeapon(object sender, EventArgs e) {
+            transform.SetParent(null);
+            transform.position = awayPos.transform.position;
         }
     
 }

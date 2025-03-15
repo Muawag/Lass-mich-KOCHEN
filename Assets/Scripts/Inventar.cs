@@ -15,6 +15,10 @@ public class Inventar : MonoBehaviour
         weapon = type;
         weapon.AddToPlayer();
     }
+    void Start()
+    {
+        weapon.AddToPlayer();
+    }
     public void AddConsumeable(Consumeable type) {
         consumeables.Add(type);
         //EventManager.instance.AddConsumeable(type);
@@ -49,7 +53,7 @@ public class Inventar : MonoBehaviour
         }
         else if(invTypeSel == 0) {
             Debug.Log("2");
-            EventManager.instance.AddConsToInv(null);
+            EventManager.instance.RemoveConsFromInv();
             weapon.AddToPlayer();
         }
     }

@@ -18,6 +18,9 @@ public class EventManager : MonoBehaviour
     public EventHandler<ConsumeableUseEventArgs> UseConsumeableEvent;
     public EventHandler<ConsumeableUseEventArgs> AddConsumeableEvent;
     public EventHandler<PosEventArgs> MolotovThrownEvent;
+    public EventHandler<EventArgs> EscapeEvent;
+    public EventHandler<EventArgs> SwitchToWeaponEvent;
+    public EventHandler<PosEventArgs> BurningThingEvent;
 
     
     private void Awake() {
@@ -71,4 +74,14 @@ public class EventManager : MonoBehaviour
     public void MolotovThrown(Vector3 posM) {
         MolotovThrownEvent?.Invoke(this, new PosEventArgs {pos = posM});
     }
+    public void Escape() {
+        EscapedEvent?.Invoke(this, EventArgs.Empty);
+    }
+    public void RemoveConsFromInv() {
+        SwitchToWeaponEvent?.Invoke(this, EventArgs.Empty);
+    }
+    public void BurnStuff(Vector3 posnew) {
+        BurningThingEvent?.Invoke(this, new PosEventArgs{pos = posnew});
+    }
+
 }
