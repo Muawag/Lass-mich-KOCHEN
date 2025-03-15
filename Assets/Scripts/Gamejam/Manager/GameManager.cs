@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     
+    public bool hasEscaped = false;
     public GameObject player;
     public float escapeTimer = 15f;
     public bool gameIsActive = true;
@@ -18,17 +19,19 @@ public class GameManager : MonoBehaviour
         if(instance == null) {
             instance = this;
         }
+        
     }
     private void Start() {
         EventManager.instance.TimesUpEvent += alarm;    
         EventManager.instance.AlarmEvent += alarm;
+        EventManager.instance.EscapedEvent += escaped;
     }
    
     public void alarm(object sender, EventArgs e){
         StartCoroutine(Escape());
     }
     IEnumerator Escape(){
-        while(escapeTimer > 0){
+        while(!hasEscaped && escapeTimer > 0){
             yield return new WaitForSeconds(1);
             escapeTimer -= 1;
             if(escapeTimer == 0){
@@ -38,7 +41,15 @@ public class GameManager : MonoBehaviour
         
     }
     public void gameover(){
-        Debug.Log("game over");
-        player.GetComponent<AudioPlayer>().playGameOverSound();
+        if(!hasEscaped){
+            player.GetComponent<AudioPlayer>().playGameOverSound();
+        }
+        
+    }
+    public void escaped (object sender, EventArgs e){
+        
+        hasEscaped = true;
+        player.GetComponent<AudioPlayer>().playSuccesSound();
+       
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using FMOD.Studio;
+using FMODUnityResonance;
 public class AudioPlayer : MonoBehaviour
 {
     public GameObject player;
@@ -59,5 +60,8 @@ public class AudioPlayer : MonoBehaviour
     public void playGameOverSound(){
         
         AudioManager.instance.PlayOneShot(FMODEvents.instance.Caught, transform.position);
+    }
+    public void playSuccesSound(){
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.Success, transform.position);
     }
 }
