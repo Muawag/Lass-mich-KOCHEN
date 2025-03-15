@@ -7,6 +7,7 @@ public class DestryableItem : MonoBehaviour
     [SerializeField] protected float hp;
     [SerializeField] protected float noisevolume;
     [SerializeField] protected float money;
+    [SerializeField] protected int value;
     
     void Start()
     {
@@ -39,6 +40,9 @@ public class DestryableItem : MonoBehaviour
         if(e.damageable == this) {
             Damage(e.damageValue);
         }
+    }
+    public int GetValue() {
+        return value;
     }
     
 }

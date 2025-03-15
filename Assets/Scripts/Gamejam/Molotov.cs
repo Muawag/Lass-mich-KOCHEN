@@ -18,7 +18,11 @@ public class Molotov : Consumeable
     public override void Use(object sender, ConsumeableUseEventArgs e)
     {
         if(e.type.Equals(this)) {
+            uses--;
             Yeet();
+            if(uses <= 0) {
+                EventManager.instance.RemoveConFromInv(this);
+            }
         }
     }
 

@@ -110,6 +110,7 @@ public class Player : MonoBehaviour
     }
     private void Use(InputAction.CallbackContext context) {
         if(context.performed) {
+            if(!inventar.ThrowColl()) {
             if(inventar.getInvTypeSelIndex() == 0 && canAttack) {
             if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
                 if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem interact)) {
@@ -122,6 +123,12 @@ public class Player : MonoBehaviour
             else if(inventar.getInvTypeSelIndex() == 1) {
                 EventManager.instance.UseConsumeable(inventar.GetConsumeable());
             }
+        }
+        else {
+            Debug.Log("Stuhl Yeeten");
+            inventar.GetThrowable().Throw();
+            inventar.ResThrowObj();
+        }
         }
     }
     IEnumerator DelayAttack() {

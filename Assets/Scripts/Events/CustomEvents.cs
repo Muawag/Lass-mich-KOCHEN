@@ -27,3 +27,6 @@ public class ConsumeableUseEventArgs : EventArgs {
 public class PosEventArgs : EventArgs {
     public Vector3 pos;
 }
+public class GameobjectSendEventArgs : EventArgs {
+    public GameObject obj;
+}
