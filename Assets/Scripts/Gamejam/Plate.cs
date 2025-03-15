@@ -1,10 +1,12 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Outline))]
 public class Plate : DestryableItem, IThrowable, IInteractable
 {
     private Rigidbody rb;
     [SerializeField] Camera cam;
     private bool thrown = false;
+    private Outline outline;
     public void OnInteract(object sender, InteractEventArgs e)
     {
         if(e.interactable.Equals(this)) {
@@ -21,15 +23,21 @@ public class Plate : DestryableItem, IThrowable, IInteractable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-         Atstart();
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
+        Atstart();
         rb = GetComponent<Rigidbody>();
         EventManager.instance.OnInteract += OnInteract;
+        EventManager.instance.UpdateOutlineEvent += HandleOutline;
     }
 
     private void Yeet() {
         transform.SetParent(null);
         rb.useGravity = true;
         rb.isKinematic = false;
+        foreach(Collider collider in col) {
+            collider.enabled = true;
+        }
         thrown = true;
         rb.AddForce((transform.forward + cam.transform.forward) *5, ForceMode.Impulse);
     }
@@ -49,11 +57,13 @@ public class Plate : DestryableItem, IThrowable, IInteractable
 
     public void ShowOutline(bool flag)
     {
-        throw new System.NotImplementedException();
+        outline.enabled = flag;
     }
 
     public void HandleOutline(object sender, OutlineUpdateEventArgs e)
     {
-        throw new System.NotImplementedException();
+        if(e.interactable.Equals(this) && !thrown && !destroyed) {
+            ShowOutline(e.flag);
+        }
     }
 }
