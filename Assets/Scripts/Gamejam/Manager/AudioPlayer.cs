@@ -56,4 +56,8 @@ public class AudioPlayer : MonoBehaviour
         AudioManager.instance.PlayOneShot(FMODEvents.instance.MolotovThrow, e.pos);
         
     }
+    public void playGameOverSound(){
+        
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.Caught, transform.position);
+    }
 }
