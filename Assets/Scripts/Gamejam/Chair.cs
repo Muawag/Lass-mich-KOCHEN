@@ -69,6 +69,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
                 }
             }
             EventManager.instance.MakeNoise(noisevolume);
+            Debug.Log("Zerbrochen");
             DestroyObject();
         }
     }

@@ -283,6 +283,7 @@ MonoBehaviour:
   hp: 100
   noisevolume: 10
   money: 100
+  value: 1
 --- !u!65 &110093598
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -549,7 +550,7 @@ Transform:
   m_GameObject: {fileID: 332866532}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.169, z: 1.005}
+  m_LocalPosition: {x: -0.01, y: -0.689, z: 1.005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -804,9 +805,25 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 1360194412}
+    - target: {fileID: 6625744199577610511, guid: d4f3998cfd8834d48956fee74f4b5dd8, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8296834368665882376, guid: d4f3998cfd8834d48956fee74f4b5dd8, type: 3}
       propertyPath: m_Name
       value: Chair (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560008035020573860, guid: d4f3998cfd8834d48956fee74f4b5dd8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560008035020573860, guid: d4f3998cfd8834d48956fee74f4b5dd8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8560008035020573860, guid: d4f3998cfd8834d48956fee74f4b5dd8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8560008035020573860, guid: d4f3998cfd8834d48956fee74f4b5dd8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1545,7 +1562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcb17498ef56d040938095c726670b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 559876509}
   noise: 0
 --- !u!114 &1928418742
 MonoBehaviour:
@@ -1572,6 +1589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a33d7615603f7b547b8c3f7f01558ee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasEscaped: 0
+  player: {fileID: 559876509}
   escapeTimer: 15
   gameIsActive: 1
 --- !u!114 &1928418744
@@ -1624,6 +1643,20 @@ MonoBehaviour:
       Data3: -1840560507
       Data4: 449743207
     Path: event:/MolotovThrow
+  <Caught>k__BackingField:
+    Guid:
+      Data1: 1764705678
+      Data2: 1298917976
+      Data3: -486803808
+      Data4: 2016641749
+    Path: event:/Caught
+  <Success>k__BackingField:
+    Guid:
+      Data1: 1908020133
+      Data2: 1329672220
+      Data3: 793155207
+      Data4: -590499320
+    Path: event:/Escaped
   <JumpSound>k__BackingField:
     Guid:
       Data1: -891126622
@@ -1631,6 +1664,13 @@ MonoBehaviour:
       Data3: -1395684200
       Data4: -1628964271
     Path: event:/Jump
+  <Kloppen>k__BackingField:
+    Guid:
+      Data1: -1720297390
+      Data2: 1199739350
+      Data3: -1985969243
+      Data4: -441185266
+    Path: event:/Kloppen
   <ToLoud>k__BackingField:
     Guid:
       Data1: -1592654264

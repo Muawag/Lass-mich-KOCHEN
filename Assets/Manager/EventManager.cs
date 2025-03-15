@@ -22,6 +22,8 @@ public class EventManager : MonoBehaviour
     public EventHandler<EventArgs> SwitchToWeaponEvent;
     public EventHandler<PosEventArgs> BurningThingEvent;
     public EventHandler<PosEventArgs> FireEndedEvent;
+    public EventHandler<GameobjectSendEventArgs> ThrowablePickedUpEvent;
+    public EventHandler<ConsumeableUseEventArgs> RemoveConFromInvEvent;
 
     
     private void Awake() {
@@ -84,6 +86,12 @@ public class EventManager : MonoBehaviour
     }
     public void FireEnded(Vector3 pos) {
         FireEndedEvent?.Invoke(this, new PosEventArgs{pos = pos});
+    }
+    public void ThrowablePickedUp(GameObject obj) {
+        ThrowablePickedUpEvent?.Invoke(this, new GameobjectSendEventArgs{obj = obj});
+    }
+    public void RemoveConFromInv(Consumeable con) {
+        RemoveConFromInvEvent?.Invoke(this, new ConsumeableUseEventArgs{type = con});
     }
 
 }
