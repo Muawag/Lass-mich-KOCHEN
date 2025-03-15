@@ -35,7 +35,7 @@ public class AudioPlayer : MonoBehaviour
                 PlayerFootsteps.start();
             }
         }
-       else if(player.GetComponent<Player>().isSprinting && player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.02f||Mathf.Abs(playerRb.linearVelocity.z) > 0.02f)){
+       else if(player.GetComponent<Player>().isSprinting && player.GetComponent<Player>().Grounded() && (Mathf.Abs(playerRb.linearVelocity.x) > 0.1f||Mathf.Abs(playerRb.linearVelocity.z) > 0.1f)){
             
             PlayerFootsteps.stop(STOP_MODE.ALLOWFADEOUT);
             PLAYBACK_STATE playbackState2;
