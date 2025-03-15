@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class NoiseManager : MonoBehaviour
 {
     public static NoiseManager instance {get; private set;}
+    
     public GameObject player;
     private void Awake() {
         if(instance == null) {
@@ -21,6 +22,7 @@ public class NoiseManager : MonoBehaviour
     private void Start() {
         manager = this.GetComponent<ManagerUI>();
         EventManager.instance.MakeNoiseEvent += addNoise;
+        
         //StartCoroutine(noiseCheck());
     }
     

@@ -3,6 +3,9 @@ using UnityEngine;
 public class OtherAudio : MonoBehaviour
 {
     
+    public GameObject player;
+      
+    
     bool ToLoudSoundPlayed = false;
     void Start()
     {
@@ -11,7 +14,7 @@ public class OtherAudio : MonoBehaviour
     void FixedUpdate()
     {
         if(NoiseManager.instance.noise >= 100 && !ToLoudSoundPlayed){
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.ToLoud, transform.position);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.ToLoud, player.transform.position);
             ToLoudSoundPlayed = true;
         }
     }
