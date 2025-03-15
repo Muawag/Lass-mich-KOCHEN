@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class DestryableItem : MonoBehaviour
 {
-    [SerializeField] private float hp;
-    [SerializeField] private float noisevolume;
-    [SerializeField] private float money;
+    [SerializeField] protected float hp;
+    [SerializeField] protected float noisevolume;
+    [SerializeField] protected float money;
     
     void Start()
     {
         EventManager.instance.DamageObjectEvent += GetDamaged;
     }
-
+    protected void Atstart() {
+        EventManager.instance.DamageObjectEvent += GetDamaged;
+    }
     public void DestroyObject()
     {
         //ParticleSystem ka was da passiert
