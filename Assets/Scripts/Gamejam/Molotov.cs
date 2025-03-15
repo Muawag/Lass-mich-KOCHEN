@@ -45,6 +45,7 @@ public class Molotov : Consumeable
         //
     }
     IEnumerator HandleDestroy() {
+        EventManager.instance.MolotovThrown(transform.position);
         yield return new WaitForSeconds(1.5f);
         EventManager.instance.MakeNoise(noise);
         Destroy(gameObject);

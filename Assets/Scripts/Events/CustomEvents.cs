@@ -24,3 +24,6 @@ public class ConsumeableAddEventArgs : EventArgs {
 public class ConsumeableUseEventArgs : EventArgs {
     public Consumeable type;
 }
+public class PosEventArgs : EventArgs {
+    public Vector3 pos;
+}

@@ -17,6 +17,7 @@ public class EventManager : MonoBehaviour
     public EventHandler<WeaponAddEventArgs> AddWeaponEvent;
     public EventHandler<ConsumeableUseEventArgs> UseConsumeableEvent;
     public EventHandler<ConsumeableUseEventArgs> AddConsumeableEvent;
+    public EventHandler<PosEventArgs> MolotovThrownEvent;
 
     
     private void Awake() {
@@ -66,5 +67,8 @@ public class EventManager : MonoBehaviour
     }
     public void AddConsToInv(Consumeable con) {
         AddConsumeableEvent?.Invoke(this, new ConsumeableUseEventArgs{type = con});
+    }
+    public void MolotovThrown(Vector3 posM) {
+        MolotovThrownEvent?.Invoke(this, new PosEventArgs {pos = posM});
     }
 }
