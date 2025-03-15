@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         input = new PlayerInput();
         HandleInput();
         inventar = GetComponent<Inventar>();
-        EventManager.instance.GameOverEvent += (sender, e) => {input.Player.Disable();transform.rotation = Quaternion.identity;};
+        EventManager.instance.GameOverEvent += (sender, e) => {input.Player.Disable();FreezeRot();};
     }
     void Update()
     {
@@ -189,6 +189,10 @@ public class Player : MonoBehaviour
             EventManager.instance.UpdateOutline(tempInteractable, false);
             tempInteractable = null;
          }
+    }
+    private void FreezeRot() {
+        rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
+
     }
 }
 

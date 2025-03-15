@@ -23,7 +23,7 @@ public class CameraRotation : MonoBehaviour
         }
     }
     void Start() {
-        //LockCursor();
+        LockCursor();
         EventManager.instance.GameOverEvent += (sender, e) => {Cursor.lockState = CursorLockMode.None;gameOver = true;};
     }
     private void Update() {
