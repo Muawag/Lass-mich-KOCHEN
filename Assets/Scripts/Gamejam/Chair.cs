@@ -13,6 +13,9 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     [SerializeField] Camera cam;
     
     private bool thrown = false;
+    private Outline outline;
+    private bool hit = false;
+    
     public void Burn()
     {
         StartCoroutine(HandleBurn());
@@ -49,10 +52,13 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
         Atstart();
         rb = GetComponent<Rigidbody>();
         emitter = AudioManager.instance.InitializeEventEmitters(FMODEvents.instance.BurningSound, this.gameObject);
         EventManager.instance.OnInteract += OnInteract;
+        EventManager.instance.UpdateOutlineEvent += HandleOutline;
     }
     private void Yeet() {
         transform.SetParent(null);
@@ -66,7 +72,8 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     }
     void OnCollisionEnter(Collision collision)
     {
-        if(thrown && collision.transform.tag != "Player") {
+        if(thrown && collision.transform.tag != "Player" && !hit) {
+            hit = true;
             if(collision.gameObject.TryGetComponent<DestryableItem>(out DestryableItem item)) {
                 if(this.value >= item.GetValue()) {
                     item.DestroyObject();
@@ -80,11 +87,13 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
 
     public void ShowOutline(bool flag)
     {
-        
+        outline.enabled = flag;
     }
 
     public void HandleOutline(object sender, OutlineUpdateEventArgs e)
     {
-        throw new System.NotImplementedException();
+        if(e.interactable.Equals(this) && !thrown && !destroyed) {
+            ShowOutline(e.flag);
+        }
     }
 }
