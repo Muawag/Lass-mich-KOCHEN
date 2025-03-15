@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public bool gameIsActive = true;
     public static GameManager instance;
 
+    [SerializeField] private GameOverScreen Screen;
+
     private void Awake()
     {
         if(instance == null) {
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour
     public void gameover(){
         if(!hasEscaped){
             player.GetComponent<AudioPlayer>().playGameOverSound();
+            Screen.Setup(false);
         }
         
     }
@@ -50,6 +53,7 @@ public class GameManager : MonoBehaviour
         
         hasEscaped = true;
         player.GetComponent<AudioPlayer>().playSuccesSound();
+        Screen.Setup(true);
        
     }
 }
