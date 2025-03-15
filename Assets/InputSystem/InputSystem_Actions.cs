@@ -80,6 +80,33 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Scroll"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ab774d48-3421-49b5-a46a-5d7c40ff1d19"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv1"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa1898c5-523e-48ad-9ba7-219f2f60100d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inv2"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c2676d9-1b3d-4ccd-88d1-21d17856cfe8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +219,39 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Use"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1915d20b-eca6-489a-a1dd-91da15c98867"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Scroll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3b38181-deea-407c-9403-9573d7d36c52"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inv1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""916b6b0d-b0dd-4c27-bba3-788f089b9083"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inv2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -267,6 +327,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
         m_Player_Use = m_Player.FindAction("Use", throwIfNotFound: true);
+        m_Player_Scroll = m_Player.FindAction("Scroll", throwIfNotFound: true);
+        m_Player_Inv1 = m_Player.FindAction("Inv1", throwIfNotFound: true);
+        m_Player_Inv2 = m_Player.FindAction("Inv2", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -339,6 +402,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Sprint;
     private readonly InputAction m_Player_Use;
+    private readonly InputAction m_Player_Scroll;
+    private readonly InputAction m_Player_Inv1;
+    private readonly InputAction m_Player_Inv2;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -349,6 +415,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputAction @Use => m_Wrapper.m_Player_Use;
+        public InputAction @Scroll => m_Wrapper.m_Player_Scroll;
+        public InputAction @Inv1 => m_Wrapper.m_Player_Inv1;
+        public InputAction @Inv2 => m_Wrapper.m_Player_Inv2;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -376,6 +445,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Use.started += instance.OnUse;
             @Use.performed += instance.OnUse;
             @Use.canceled += instance.OnUse;
+            @Scroll.started += instance.OnScroll;
+            @Scroll.performed += instance.OnScroll;
+            @Scroll.canceled += instance.OnScroll;
+            @Inv1.started += instance.OnInv1;
+            @Inv1.performed += instance.OnInv1;
+            @Inv1.canceled += instance.OnInv1;
+            @Inv2.started += instance.OnInv2;
+            @Inv2.performed += instance.OnInv2;
+            @Inv2.canceled += instance.OnInv2;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -398,6 +476,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Use.started -= instance.OnUse;
             @Use.performed -= instance.OnUse;
             @Use.canceled -= instance.OnUse;
+            @Scroll.started -= instance.OnScroll;
+            @Scroll.performed -= instance.OnScroll;
+            @Scroll.canceled -= instance.OnScroll;
+            @Inv1.started -= instance.OnInv1;
+            @Inv1.performed -= instance.OnInv1;
+            @Inv1.canceled -= instance.OnInv1;
+            @Inv2.started -= instance.OnInv2;
+            @Inv2.performed -= instance.OnInv2;
+            @Inv2.canceled -= instance.OnInv2;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -468,5 +555,8 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnUse(InputAction.CallbackContext context);
+        void OnScroll(InputAction.CallbackContext context);
+        void OnInv1(InputAction.CallbackContext context);
+        void OnInv2(InputAction.CallbackContext context);
     }
 }

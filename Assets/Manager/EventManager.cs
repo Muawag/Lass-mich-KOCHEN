@@ -15,7 +15,9 @@ public class EventManager : MonoBehaviour
     public EventHandler<EventArgs> TimesUpEvent;
     public EventHandler<DamageEventArgs> DamageObjectEvent;
     public EventHandler<WeaponAddEventArgs> AddWeaponEvent;
-    public EventHandler<ConsumeableAddEventArgs> AddConsumeableEvent;
+    public EventHandler<ConsumeableUseEventArgs> UseConsumeableEvent;
+    public EventHandler<ConsumeableUseEventArgs> AddConsumeableEvent;
+
     
     private void Awake() {
         if(instance == null) {
@@ -56,7 +58,13 @@ public class EventManager : MonoBehaviour
     public void AddWeapon(WeaponTypes wtype) {
         AddWeaponEvent?.Invoke(this, new WeaponAddEventArgs {type = wtype});
     }
-    public void AddConsumeable(ConsumeableType ctype) {
-        AddConsumeableEvent?.Invoke(this, new ConsumeableAddEventArgs {type = ctype});
+    public void AddConsumeable(Consumeable ctype) {
+        //AddConsumeableEvent?.Invoke(this, new ConsumeableAddEventArgs {type = ctype});
+    }
+    public void UseConsumeable(Consumeable con) {
+        UseConsumeableEvent?.Invoke(this, new ConsumeableUseEventArgs{type = con});
+    }
+    public void AddConsToInv(Consumeable con) {
+        AddConsumeableEvent?.Invoke(this, new ConsumeableUseEventArgs{type = con});
     }
 }
