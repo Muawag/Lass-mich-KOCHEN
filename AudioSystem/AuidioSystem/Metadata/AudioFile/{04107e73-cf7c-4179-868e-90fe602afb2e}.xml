@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{a91d3492-a219-43bb-a40f-0ebc1a1d76b8}">
+	<object class="AudioFile" id="{04107e73-cf7c-4179-868e-90fe602afb2e}">
 		<property name="assetPath">
-			<value>Punch.wav</value>
+			<value>PhoneRinging.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
 		</property>
 		<property name="channelCount">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<property name="length">
-			<value>0.4179591836734694</value>
+			<value>1.8546938775510204</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{ccbb1eb9-94d3-4169-96e8-bbc358f23128}</destination>

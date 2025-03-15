@@ -21,3 +21,6 @@ public class WeaponAddEventArgs : EventArgs {
 public class ConsumeableAddEventArgs : EventArgs {
     public ConsumeableType type;
 }
+public class ConsumeableUseEventArgs : EventArgs {
+    public Consumeable type;
+}
