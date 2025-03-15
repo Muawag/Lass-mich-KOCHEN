@@ -1,16 +1,11 @@
 using UnityEngine;
 
-public class EscapeDoor : MonoBehaviour
+public class EscapeDoor : MonoBehaviour, IInteractable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void OnInteract(object sender, InteractEventArgs e)
     {
-        
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
