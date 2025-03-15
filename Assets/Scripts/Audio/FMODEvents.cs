@@ -9,8 +9,10 @@ public class FMODEvents : MonoBehaviour
     [field: Header("Jump Sound")]
     [field: SerializeField] public EventReference JumpSound {get; private set;}
 
-    [field: Header("punch")]
-    [field: SerializeField] public EventReference punch {get; private set;}
+    [field: Header("Other Audio")]
+    [field: SerializeField] public EventReference ToLoud {get; private set;}
+    
+    
     public static FMODEvents instance { get; private set;}
 
     private void Awake() {

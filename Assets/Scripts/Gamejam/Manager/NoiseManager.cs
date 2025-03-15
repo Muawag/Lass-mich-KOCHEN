@@ -3,6 +3,17 @@ using UnityEngine;
 
 public class NoiseManager : MonoBehaviour
 {
+    public static NoiseManager instance {get; private set;}
+
+    private void Awake() {
+        if(instance == null) {
+            instance = this;
+        }
+        else {
+            Debug.LogError("Mehr als ein NoiseManager");
+        }
+    }
+    
     public float noise;
     private ManagerUI manager;
 
