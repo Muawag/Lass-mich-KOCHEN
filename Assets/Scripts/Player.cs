@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private Inventar inventar;
     private bool canAttack = true;
     private float scrollchange;
+    public bool isSprinting = false;
    
     void Start()
     {
@@ -99,10 +100,12 @@ public class Player : MonoBehaviour
         if(context.started) {
             movementForce = 3f;
             maxSpeed = 2f;
+            isSprinting = true;
         }
         else if(context.canceled) {
             movementForce = 2f;
             maxSpeed = 1f;
+            isSprinting = false;
         }
     }
     private void Use(InputAction.CallbackContext context) {
