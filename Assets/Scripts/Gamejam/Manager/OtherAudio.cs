@@ -38,8 +38,12 @@ public class OtherAudio : MonoBehaviour
         else if(e.type == DestroyType.Chair){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.ChairBreak, e.pos);
         }
-    
-    
+        else if(e.type == DestroyType.Table){
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.TableBreak, e.pos);
+        }
+        else if(e.type == DestroyType.Plate){
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.PlateBreak, e.pos);
+        }
     }
     void FireEnded(object sender, PosEventArgs e) {
 
