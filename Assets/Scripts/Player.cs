@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private bool canAttack = true;
     private float scrollchange;
     public bool isSprinting = false;
+    private IInteractable tempInteractable = null;
    
     void Start()
     {
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     void Update()
     {
         HandleScrollChange();
+        SearchForOutline();
         
     }
     void HandleInput() {
@@ -162,7 +164,23 @@ public class Player : MonoBehaviour
             inventar.SetInvIndex(1);
         }
     }
-    
+    private void SearchForOutline() {
+         if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
+                if(hit.transform.gameObject.TryGetComponent<IInteractable>(out IInteractable interactable)) {
+                    if(tempInteractable != interactable) {
+                        if(tempInteractable == null) {
+                            EventManager.instance.UpdateOutline(interactable, true);
+                            tempInteractable = interactable;
+                        }
+                        else {
+                            EventManager.instance.UpdateOutline(tempInteractable, false);
+                            EventManager.instance.UpdateOutline(tempInteractable, true);
+                            tempInteractable = interactable;
+                        }
+                    }
+                }
+         }
+    }
 }
 
 

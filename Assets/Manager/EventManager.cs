@@ -24,6 +24,7 @@ public class EventManager : MonoBehaviour
     public EventHandler<PosEventArgs> FireEndedEvent;
     public EventHandler<GameobjectSendEventArgs> ThrowablePickedUpEvent;
     public EventHandler<ConsumeableUseEventArgs> RemoveConFromInvEvent;
+    public EventHandler<OutlineUpdateEventArgs> UpdateOutlineEvent;
 
     
     private void Awake() {
@@ -43,8 +44,8 @@ public class EventManager : MonoBehaviour
     public void MakeNoise(float noiseVolume) {
         MakeNoiseEvent?.Invoke(this, new NoiseEvent{noise = noiseVolume});
     }
-    public void ObjectDestroyed(float value, GameObject gobject) {
-        ObjectDestroyedEvent?.Invoke(this, new DestroyEvent{money = value});
+    public void ObjectDestroyed(float value, GameObject gobject, Vector3 pos, DestroyType type) {
+        ObjectDestroyedEvent?.Invoke(this, new DestroyEvent{money = value, pos = pos, type = type});
     }
     IEnumerator DestroyAfter(GameObject toDestroy) {
         yield return new WaitForSeconds(1f);
@@ -92,6 +93,9 @@ public class EventManager : MonoBehaviour
     }
     public void RemoveConFromInv(Consumeable con) {
         RemoveConFromInvEvent?.Invoke(this, new ConsumeableUseEventArgs{type = con});
+    }
+    public void UpdateOutline(IInteractable interactable, bool flag) {
+        UpdateOutlineEvent?.Invoke(this, new OutlineUpdateEventArgs{interactable = interactable, flag = flag});
     }
 
 }

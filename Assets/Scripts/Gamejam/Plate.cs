@@ -4,7 +4,6 @@ public class Plate : DestryableItem, IThrowable, IInteractable
 {
     private Rigidbody rb;
     [SerializeField] Camera cam;
-    [SerializeField] Collider col;
     private bool thrown = false;
     public void OnInteract(object sender, InteractEventArgs e)
     {
@@ -31,7 +30,6 @@ public class Plate : DestryableItem, IThrowable, IInteractable
         transform.SetParent(null);
         rb.useGravity = true;
         rb.isKinematic = false;
-        col.enabled = true;
         thrown = true;
         rb.AddForce((transform.forward + cam.transform.forward) *5, ForceMode.Impulse);
     }
@@ -49,4 +47,13 @@ public class Plate : DestryableItem, IThrowable, IInteractable
         }
     }
 
+    public void ShowOutline(bool flag)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void HandleOutline(object sender, OutlineUpdateEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }

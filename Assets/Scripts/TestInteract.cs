@@ -18,4 +18,14 @@ public class TestInteract : MonoBehaviour, IInteractable
     {
         Debug.Log("Ich gebe mir die kugel");
     }
+
+    public void ShowOutline(bool flag)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void HandleOutline(object sender, OutlineUpdateEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }

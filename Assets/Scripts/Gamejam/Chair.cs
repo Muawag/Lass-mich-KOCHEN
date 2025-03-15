@@ -2,14 +2,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using FMODUnity;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(StudioEventEmitter))]
+[RequireComponent(typeof(Outline))]
 public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
 {
     private StudioEventEmitter emitter;
     private Rigidbody rb;
     [SerializeField] Camera cam;
-    [SerializeField] Collider col;
+    
     private bool thrown = false;
     public void Burn()
     {
@@ -56,7 +58,9 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
         transform.SetParent(null);
         rb.useGravity = true;
         rb.isKinematic = false;
-        col.enabled = true;
+        foreach(Collider collider in col) {
+            collider.enabled = true;
+        }
         thrown = true;
         rb.AddForce((transform.forward + cam.transform.forward) *5, ForceMode.Impulse);
     }
@@ -74,5 +78,13 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
         }
     }
 
+    public void ShowOutline(bool flag)
+    {
+        
+    }
 
+    public void HandleOutline(object sender, OutlineUpdateEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }

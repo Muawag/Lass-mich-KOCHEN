@@ -84,7 +84,7 @@ public class Inventar : MonoBehaviour
             EventManager.instance.RemoveConsFromInv();
             }
             weapon.RemoveFromPlayer();
-            e.obj.GetComponent<Collider>().enabled = false;
+            DisableColliders(e.obj.GetComponent<DestryableItem>().col);
             throwObj = e.obj;
             throwObj.transform.position = throwPos.position;
             throwObj.transform.rotation = throwPos.rotation;
@@ -100,5 +100,11 @@ public class Inventar : MonoBehaviour
     public void ResThrowObj() {
         throwObj = null;
         SetInvIndex(consumeableIndex);
+    }
+    private void DisableColliders(List<Collider> colls) {
+        foreach (Collider item in colls)
+        {
+            item.enabled = false;
+        }
     }
 }

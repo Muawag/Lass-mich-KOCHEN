@@ -14,6 +14,8 @@ public class NoiseEvent : EventArgs {
 }
 public class DestroyEvent : EventArgs {
     public float money;
+    public DestroyType type;
+    public Vector3 pos;
 }
 public class WeaponAddEventArgs : EventArgs {
     public WeaponTypes type;
@@ -29,4 +31,8 @@ public class PosEventArgs : EventArgs {
 }
 public class GameobjectSendEventArgs : EventArgs {
     public GameObject obj;
+}
+public class OutlineUpdateEventArgs : EventArgs {
+    public IInteractable interactable;
+    public bool flag;
 }
