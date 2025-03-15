@@ -21,6 +21,7 @@ public class EventManager : MonoBehaviour
     public EventHandler<EventArgs> EscapeEvent;
     public EventHandler<EventArgs> SwitchToWeaponEvent;
     public EventHandler<PosEventArgs> BurningThingEvent;
+    public EventHandler<PosEventArgs> FireEndedEvent;
 
     
     private void Awake() {
@@ -82,6 +83,9 @@ public class EventManager : MonoBehaviour
     }
     public void BurnStuff(Vector3 posnew) {
         BurningThingEvent?.Invoke(this, new PosEventArgs{pos = posnew});
+    }
+    public void FireEnded(Vector3 pos) {
+        FireEndedEvent?.Invoke(this, new PosEventArgs{pos = pos});
     }
 
 }
