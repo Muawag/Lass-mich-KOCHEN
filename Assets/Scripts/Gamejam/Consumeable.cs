@@ -16,6 +16,7 @@ public class Consumeable : MonoBehaviour
         EventManager.instance.AddConsumeableEvent += UpdatePos;
     }
     private void UpdatePos(object sender, ConsumeableUseEventArgs e) {
+        Debug.Log("Rein");
         if(e.type.Equals(this)) {
             transform.position = holder.transform.position;
             transform.rotation = holder.transform.rotation;
