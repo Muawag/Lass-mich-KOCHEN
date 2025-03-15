@@ -15,9 +15,7 @@ public class GithubScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A)) {
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.testSFX, transform.position);
-        }
+        
     }
     void HandleInput() {
         input.Player.Enable();

@@ -384,17 +384,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 573468421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &559876509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 474338250450736321, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
+  m_PrefabInstance: {fileID: 1289758592}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &559876510 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2952369852818702335, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
   m_PrefabInstance: {fileID: 1289758592}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 559876509}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a4370ab31c31fe49bf14c737b829ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &559876518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559876509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nonRigidbodyVelocity: 0
+  attenuationObject: {fileID: 559876509}
 --- !u!1 &573468419
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +490,8 @@ MonoBehaviour:
   uses: 1
   type: 0
   noise: 30
+  holder: {fileID: 0}
+  awayPos: {fileID: 0}
   cam: {fileID: 1360194412}
 --- !u!1 &632613074
 GameObject:
@@ -640,7 +661,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2982218292832200972, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 208145624}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 474338250450736321, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 559876518}
   m_SourcePrefab: {fileID: 100100000, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
 --- !u!1 &1326979821
 GameObject:
@@ -954,6 +978,8 @@ GameObject:
   - component: {fileID: 1928418741}
   - component: {fileID: 1928418740}
   - component: {fileID: 1928418744}
+  - component: {fileID: 1928418746}
+  - component: {fileID: 1928418745}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1059,6 +1085,51 @@ MonoBehaviour:
   crowbar: {fileID: 2004111303}
   molotov: {fileID: 0}
   graffiti: {fileID: 0}
+--- !u!114 &1928418745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928418737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b5d9e6de7db7649906c8faf1ddee4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <PlayerFootsteps>k__BackingField:
+    Guid:
+      Data1: 1442794051
+      Data2: 1317598835
+      Data3: 270956161
+      Data4: -1568386779
+    Path: event:/PlayerFootstep
+  <JumpSound>k__BackingField:
+    Guid:
+      Data1: -891126622
+      Data2: 1290228400
+      Data3: -1395684200
+      Data4: -1628964271
+    Path: event:/Jump
+  <punch>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+--- !u!114 &1928418746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928418737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 448d0be1835eed44796b7a69acacd623, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2004111302
 GameObject:
   m_ObjectHideFlags: 0
