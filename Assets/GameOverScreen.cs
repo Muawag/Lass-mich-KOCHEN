@@ -12,6 +12,7 @@ public class GameOverScreen : MonoBehaviour
     {
         cGroup = GetComponent<CanvasGroup>();
         cGroup.alpha = 0f;
+        Setup(false);
     }
 
     public void Setup(bool won)
