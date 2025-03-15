@@ -885,6 +885,10 @@ PrefabInstance:
       propertyPath: 'consumeables.Array.data[0]'
       value: 
       objectReference: {fileID: 573468422}
+    - target: {fileID: 3072447234534124050, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 1ef6a7cc3aebc2b4285291411aecf4d2, type: 2}
     - target: {fileID: 6221988351063842459, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.83
@@ -1315,6 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfcb17498ef56d040938095c726670b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   noise: 0
 --- !u!114 &1928418742
 MonoBehaviour:
@@ -1439,6 +1444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047fe2fea6ad1a544995828f945f9da1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 559876509}
 --- !u!1 &2004111302
 GameObject:
   m_ObjectHideFlags: 0
