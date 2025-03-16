@@ -157,18 +157,18 @@ public class Player : MonoBehaviour
         else if(scrollchange > 0) {
             change = 1;
         }
-        inventar.Scroll(change);
+        inventar.ScrollInv(change);
         change = 0;
         scrollchange = 0f;
         }     
     }
     private void Inv1(InputAction.CallbackContext context) {
-        if(context.performed) {
+        if(context.performed && !inventar.ThrowColl()) {
             inventar.SetInvIndex(0);
         }
     }
     private void Inv2(InputAction.CallbackContext context) {
-        if(context.performed) {
+        if(context.performed && !inventar.molliUsed && !inventar.ThrowColl()) {
             inventar.SetInvIndex(1);
         }
     }

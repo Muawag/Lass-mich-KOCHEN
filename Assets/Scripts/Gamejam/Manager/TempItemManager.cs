@@ -10,7 +10,7 @@ public class TempItemManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.M)) {
+        /*if(Input.GetKeyDown(KeyCode.M)) {
             Debug.Log("Crowbar");
             inventar.AddWeapon(crowbar);
         }
@@ -20,6 +20,6 @@ public class TempItemManager : MonoBehaviour
         }
         else if(Input.GetKeyDown(KeyCode.L)) {
             inventar.AddConsumeable(new Consumeable());
-        }
+        }*/
     }
 }
