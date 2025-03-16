@@ -18,7 +18,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     private bool hit = false;
     public void Burn()
     {
-        if(burning) {
+        if(!burning) {
         burning = true;
         Debug.Log("Jetzt");
         StartCoroutine(HandleBurn());
