@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ManagerUI : MonoBehaviour
 {
     [SerializeField] private Slider sliderWhite;
+    
     public float noise;
     public float lerpTimer;
     private float lerpSpeed = 2f;

@@ -11,6 +11,7 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference Success {get; private set;}
     [field: SerializeField] public EventReference JumpSound {get; private set;}
     [field: SerializeField] public EventReference Kloppen {get; private set;}
+    [field: SerializeField] public EventReference ThrowSound {get; private set;}
     [field: Header("Other Audio")]
     
     [field: SerializeField] public EventReference ChairBreak {get; private set;}
