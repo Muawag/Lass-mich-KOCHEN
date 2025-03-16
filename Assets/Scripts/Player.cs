@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
     private void Jump(InputAction.CallbackContext context) {
         if(Grounded() && context.performed) {
             rb.AddForce(Vector3.up * movementForce *5f, ForceMode.Impulse);
-            AudioManager.instance.PlayOneShot(FMODEvents.instance.JumpSound, transform.position);
+            //AudioManager.instance.PlayOneShot(FMODEvents.instance.JumpSound, transform.position);
         }
     }
     public bool Grounded() {
