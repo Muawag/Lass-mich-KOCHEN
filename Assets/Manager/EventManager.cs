@@ -27,6 +27,8 @@ public class EventManager : MonoBehaviour
     public EventHandler<OutlineUpdateEventArgs> UpdateOutlineEvent;
     public EventHandler<EventArgs> GameOverEvent;
     public EventHandler<ObjDestroyedEventArgs> ObjZerfallenEvent;
+    public EventHandler<EventArgs> EscapedAfterAlarmEvent;
+    public EventHandler<EventArgs> EscapedAfterToLoudEvent;
 
     
     private void Awake() {
@@ -105,5 +107,11 @@ public class EventManager : MonoBehaviour
     }
     public void ObjectDestroyed(DestryableItem item) {
         ObjZerfallenEvent?.Invoke(this, new ObjDestroyedEventArgs{item = item});
+    }
+    public void EscapedAfterAlarm() {
+        EscapedAfterAlarmEvent?.Invoke(this, EventArgs.Empty);
+    }
+    public void EscapedAfterToLoud() {
+        EscapedAfterToLoudEvent?.Invoke(this, EventArgs.Empty);
     }
 }

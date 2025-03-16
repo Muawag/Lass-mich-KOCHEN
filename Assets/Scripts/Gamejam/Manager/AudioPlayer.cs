@@ -69,6 +69,8 @@ public class AudioPlayer : MonoBehaviour
     }
     public void playSuccesSound(){
         AudioManager.instance.PlayOneShot(FMODEvents.instance.Success, transform.position);
+        EventManager.instance.EscapedAfterAlarm();
+        EventManager.instance.EscapedAfterToLoud();
     }
     public void playKloppSound(object sender, EventArgs e){
         AudioManager.instance.PlayOneShot(FMODEvents.instance.Kloppen, transform.position);
