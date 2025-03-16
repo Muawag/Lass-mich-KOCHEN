@@ -4128,6 +4128,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1017080081502384005, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: Fill
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1017080081502384005, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: sliderWhite
       value: 
       objectReference: {fileID: 35631584}
