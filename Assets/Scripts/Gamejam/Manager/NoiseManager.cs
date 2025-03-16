@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class NoiseManager : MonoBehaviour
 {
+    
     public static NoiseManager instance {get; private set;}
     
     public GameObject player;

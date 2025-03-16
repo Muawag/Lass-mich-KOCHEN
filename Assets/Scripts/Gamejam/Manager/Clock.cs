@@ -1,14 +1,23 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Clock : MonoBehaviour
 {
+    public GameObject clockUi;
+    private TextMeshProUGUI time;
     public float clock;
     public void Start()
     {
+        time = clockUi.GetComponent<TextMeshProUGUI>();
         clock = 22.00f;
         StartCoroutine(Time());
+    }
+    void FixedUpdate()
+    {
+        updateTime();
     }
     IEnumerator Time (){
         while(GameManager.instance.gameIsActive){
@@ -30,5 +39,8 @@ public class Clock : MonoBehaviour
             yield return new WaitForSeconds(10);
         }
     
+    }
+    void updateTime(){
+        time.text = clock.ToString() + ":00";
     }
 }
