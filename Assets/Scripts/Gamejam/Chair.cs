@@ -21,6 +21,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     {
         if(!burning) {
         burning = true;
+        zerfallen.burning = true;
         Debug.Log("Jetzt");
         StartCoroutine(HandleBurn());
         }

@@ -13,6 +13,7 @@ public class Table : DestryableItem, IBurnable
     {
         if(!burning) {
         burning = true;
+        zerfallen.burning = true;
         Debug.Log("Tisch");
         StartCoroutine(HandleBurn());
         }

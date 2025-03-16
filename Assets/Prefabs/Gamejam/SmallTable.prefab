@@ -355,3 +355,5 @@ MonoBehaviour:
   components: []
   colls: []
   flag: 1
+  burning: 0
+  schwarz: {fileID: 2100000, guid: 1879337cdfba8a04aa046d0a457d911f, type: 2}

@@ -13,7 +13,7 @@ public class DestryableItem : MonoBehaviour
     [SerializeField] public DestroyType type;
     protected bool burning = false;
     public bool destroyed = false;
-    [SerializeField] private Zerfallen zerfallen;
+    [SerializeField] protected Zerfallen zerfallen;
     
     void Start()
     {

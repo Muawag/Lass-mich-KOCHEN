@@ -11,6 +11,8 @@ public class Zerfallen : MonoBehaviour
     private bool yeeted = false;
     [SerializeField] bool flag;
     public bool burning = false;
+    private Material m;
+    [SerializeField] Material schwarz;
 
     public void YeetComponents() {
         if(!yeeted) {
@@ -22,6 +24,11 @@ public class Zerfallen : MonoBehaviour
                 }
             }
         foreach(GameObject g in components) {
+            if(burning) {
+                Debug.Log("schwarz");
+                m = g.GetComponent<Renderer>().material;
+                m.color = Color.black;
+            }
             rTemp = g.AddComponent<Rigidbody>();
             Debug.Log("Drauf");
             Vector3 forceVec = new Vector3(Random.Range(0,1),Random.Range(0,1),Random.Range(0,1));

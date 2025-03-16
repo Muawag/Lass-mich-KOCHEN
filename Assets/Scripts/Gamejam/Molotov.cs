@@ -16,11 +16,12 @@ public class Molotov : Consumeable
     [SerializeField] GlassCheat cheat;
     [SerializeField] Zerfallen zerfallen;
     private bool burningOver = false;
+    [SerializeField] GameObject meolo;
     void Start()
     {
         Atstart();
         rb = GetComponent<Rigidbody>();
-        col = GetComponentInChildren<Collider>();
+        col = meolo.GetComponent<Collider>();
         CreateMolotovParticle();
     }
     void FixedUpdate()
