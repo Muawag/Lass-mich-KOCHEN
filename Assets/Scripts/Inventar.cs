@@ -5,8 +5,10 @@ public class Inventar : MonoBehaviour
 {
     [SerializeField] Weapon weapon;
     [SerializeField] List<Consumeable> consumeables;
+    [SerializeField] Consumeable molli;
+    public bool molliUsed = false;
     private int consumeableIndex = 0;
-    private int invTypeSel = 0;
+    public int invTypeSel = 0;
     [SerializeField] Transform throwPos;
     private GameObject throwObj = null;
 
@@ -22,6 +24,7 @@ public class Inventar : MonoBehaviour
         weapon.AddToPlayer();
         EventManager.instance.RemoveConFromInvEvent += RemoveConsumeable;
         EventManager.instance.ThrowablePickedUpEvent += ThrowablePickedUp;
+        EventManager.instance.UseConsumeableEvent += (sender, e) => {invTypeSel = 1;StartCoroutine(ResetInvIndex()) ; molliUsed = true;};
     }
     public void AddConsumeable(Consumeable type) {
         consumeables.Add(type);
@@ -43,6 +46,19 @@ public class Inventar : MonoBehaviour
         Debug.Log(consumeableIndex);
         }
         EventManager.instance.AddConsToInv(GetConsumeable());
+    }
+    public void ScrollInv(int f) {
+        if(!molliUsed) {
+            Debug.Log("ScrollInv");
+        invTypeSel += f;
+        if(invTypeSel > 1) {
+            invTypeSel = 0;
+        }
+        else if(invTypeSel < 0) {
+            invTypeSel = 1;
+        }
+        SetInvIndex(invTypeSel);
+        }
     }
     public int getInvTypeSelIndex() {
         return invTypeSel;
@@ -99,12 +115,21 @@ public class Inventar : MonoBehaviour
     }
     public void ResThrowObj() {
         throwObj = null;
-        SetInvIndex(consumeableIndex);
+        if(molliUsed) {
+            invTypeSel = 0;
+        }
+        SetInvIndex(invTypeSel);
     }
     private void DisableColliders(List<Collider> colls) {
         foreach (Collider item in colls)
         {
             item.enabled = false;
+        }
+    }
+    System.Collections.IEnumerator ResetInvIndex() {
+        yield return new WaitForSeconds(0.5f);
+        if(throwObj == null) {
+        SetInvIndex(0);
         }
     }
 }
