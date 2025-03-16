@@ -37,3 +37,6 @@ public class OutlineUpdateEventArgs : EventArgs {
     public IInteractable interactable;
     public bool flag;
 }
+public class ObjDestroyedEventArgs : EventArgs {
+    public DestryableItem item;
+}

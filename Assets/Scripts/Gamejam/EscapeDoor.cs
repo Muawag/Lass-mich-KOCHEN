@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class EscapeDoor : MonoBehaviour, IInteractable
 {
+    public void DisableOutline(object sender, ObjDestroyedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void HandleOutline(object sender, OutlineUpdateEventArgs e)
     {
         throw new System.NotImplementedException();

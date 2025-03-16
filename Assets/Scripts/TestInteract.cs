@@ -28,4 +28,9 @@ public class TestInteract : MonoBehaviour, IInteractable
     {
         throw new System.NotImplementedException();
     }
+
+    public void DisableOutline(object sender, ObjDestroyedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }

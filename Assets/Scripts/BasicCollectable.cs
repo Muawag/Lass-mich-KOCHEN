@@ -5,6 +5,11 @@ public class BasicCollectable : MonoBehaviour, IInteractable
 {
     [SerializeField] Inventar inventar;
 
+    public void DisableOutline(object sender, ObjDestroyedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void HandleOutline(object sender, OutlineUpdateEventArgs e)
     {
         throw new System.NotImplementedException();

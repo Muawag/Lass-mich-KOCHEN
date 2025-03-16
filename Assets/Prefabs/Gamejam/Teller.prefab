@@ -52,7 +52,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5266911156283931870}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4dcf0c7d91ffe324c9e01387ab1818bc, type: 3}
   m_Name: 
@@ -64,6 +64,8 @@ MonoBehaviour:
   col:
   - {fileID: 7785015739560943156}
   type: 3
+  destroyed: 0
+  zerfallen: {fileID: 0}
   cam: {fileID: 0}
 --- !u!54 &5693844021012247897
 Rigidbody:

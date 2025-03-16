@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
             if(!inventar.ThrowColl()) {
             if(inventar.getInvTypeSelIndex() == 0 && canAttack) {
             if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
-                if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem interact)) {
+                if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem interact) && !interact.destroyed) {
                     Debug.Log("AGGGGGGGGG");
                     StartCoroutine(DelayAttack());
                     EventManager.instance.DamageObject(interact, inventar.GetDamage());
@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
     }
     IEnumerator DelayAttack() {
         canAttack = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         canAttack = true;
         
     }

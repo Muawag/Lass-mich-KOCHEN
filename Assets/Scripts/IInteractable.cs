@@ -6,5 +6,6 @@ public interface IInteractable
 
     public void ShowOutline(bool flag);
     public void HandleOutline(object sender, OutlineUpdateEventArgs e);
+    public void DisableOutline(object sender, ObjDestroyedEventArgs e);
     
 }
