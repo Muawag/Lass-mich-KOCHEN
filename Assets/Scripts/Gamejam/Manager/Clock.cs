@@ -21,14 +21,14 @@ public class Clock : MonoBehaviour
     IEnumerator Time (){
         while(GameManager.instance.gameIsActive && !timesUp){
            
-            if(clock == 17){
+            if(clock == 20){
                 
                 EventManager.instance.TimesUp();
                 timesUp = true;
             }
 
             else{
-                yield return new WaitForSeconds(10);
+                yield return new WaitForSeconds(0.5f);
                 clock += 1;
             }
         }
@@ -82,12 +82,21 @@ public class Clock : MonoBehaviour
             time.text = "02:30";
         }
         if(clock == 15){
-            time.text = "03:30";
+            time.text = "02:45";
         }
         if(clock == 16){
-            time.text = "03:45";
+            time.text = "03:00";
         }
         if(clock == 17){
+            time.text = "03:15";
+        }
+        if(clock == 18){
+            time.text = "03:30";
+        }
+        if(clock == 19){
+            time.text = "03:45";
+        }
+        if(clock == 20){
             time.text = "04:00";
         }
     }
