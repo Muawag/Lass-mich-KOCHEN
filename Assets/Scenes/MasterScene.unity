@@ -4130,7 +4130,7 @@ PrefabInstance:
     - target: {fileID: 1017080081502384005, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: Fill
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1881363562}
     - target: {fileID: 1017080081502384005, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: sliderWhite
       value: 
@@ -5888,6 +5888,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7107063609321865166, guid: 4a1832b9c531f8940824471b0934cbaf, type: 3}
   m_PrefabInstance: {fileID: 1787462877}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1881363562 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6369274996050188062, guid: 669bd60cc567488429ffa49e387dced4, type: 3}
+  m_PrefabInstance: {fileID: 35631583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1891158779
 PrefabInstance:
   m_ObjectHideFlags: 0
