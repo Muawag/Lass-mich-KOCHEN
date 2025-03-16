@@ -35,14 +35,17 @@ public class OtherAudio : MonoBehaviour
         if(e.type == DestroyType.Glass){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.GlasBreak, e.pos);
         }
-        else if(e.type == DestroyType.Chair){
+        else if(e.type == DestroyType.Chair && !e.burning){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.ChairBreak, e.pos);
         }
-        else if(e.type == DestroyType.Table){
+        else if(e.type == DestroyType.Table && !e.burning){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.TableBreak, e.pos);
         }
         else if(e.type == DestroyType.Plate){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.PlateBreak, e.pos);
+        }
+        else if(e.burning){
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.DestroyFire, e.pos);
         }
     }
 }
