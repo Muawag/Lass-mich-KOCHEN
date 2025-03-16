@@ -16,6 +16,7 @@ public class DestroyEvent : EventArgs {
     public float money;
     public DestroyType type;
     public Vector3 pos;
+    public bool burning;
 }
 public class WeaponAddEventArgs : EventArgs {
     public WeaponTypes type;

@@ -9,11 +9,19 @@ public class Molotov : Consumeable
     private Collider col;
     public Collider[] colliders;
     private bool activatetd = false;
+    [SerializeField] GameObject partSystem;
+    [SerializeField] Transform burnPos;
+    GameObject partsysCreated;
     void Start()
     {
         Atstart();
         rb = GetComponent<Rigidbody>();
         col = GetComponentInChildren<Collider>();
+        CreateMolotovParticle();
+    }
+    void FixedUpdate()
+    {
+        UpdateRot();
     }
     public override void Use(object sender, ConsumeableUseEventArgs e)
     {
@@ -39,7 +47,7 @@ public class Molotov : Consumeable
         if(collision.transform.tag != "Player" && !activatetd) {
         Debug.Log("Burn");
         activatetd = true;
-        colliders = Physics.OverlapSphere(transform.position, 5f, targetMask);
+        colliders = Physics.OverlapSphere(transform.position, 3f, targetMask);
         foreach (Collider item in colliders)
         {
             item.gameObject.GetComponent<IBurnable>().Burn();
@@ -54,5 +62,18 @@ public class Molotov : Consumeable
         EventManager.instance.MakeNoise(noise);
         Destroy(gameObject);
         //bombardino crocodilo
+    }
+    private void CreateMolotovParticle() {
+        partsysCreated = Instantiate(partSystem, burnPos.position, burnPos.rotation);
+        ParticleSystem sys = partSystem.GetComponentInChildren<ParticleSystem>();
+        partsysCreated.transform.SetParent(burnPos.transform);
+        var shape = sys.shape;
+        shape.angle = 10f;
+        ParticleSystem.MainModule size = sys.main;
+        size.startSize = new ParticleSystem.MinMaxCurve(1f, 1.5f);
+        
+    }
+    private void UpdateRot() {
+        partsysCreated.transform.rotation = new Quaternion(0,0,0,1);
     }
 }

@@ -6,7 +6,6 @@ public class FireHandler : MonoBehaviour
     public GameObject particleObj;
     public static FireHandler instance;
     public Dictionary<int, GameObject> systems = new Dictionary<int, GameObject>(); 
-    private int i = 0;
 
     public void PlaceParticleSystem(Transform t, Vector3 pos, float size) {
         GameObject partnew =  Instantiate(particleObj, pos, Quaternion.identity);

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private float scrollchange;
     public bool isSprinting = false;
     private IInteractable tempInteractable = null;
+    private Vector3 tempMoveVec;
    
     void Start()
     {
@@ -62,6 +63,7 @@ public class Player : MonoBehaviour
         
         forceDirection += input.Player.Movement.ReadValue<Vector2>().x * GetCameraRight(gameObject) * movementForce;
         forceDirection += input.Player.Movement.ReadValue<Vector2>().y * GetCameraForward(gameObject) * movementForce;
+        tempMoveVec = forceDirection;
         rb.AddForce(forceDirection* movementForce , ForceMode.Impulse);
         forceDirection = Vector3.zero;
         Vector3 horizontalVelocity = rb.linearVelocity;
@@ -124,7 +126,9 @@ public class Player : MonoBehaviour
             }
             }
             else if(inventar.getInvTypeSelIndex() == 1) {
+                if(inventar.GetConsumeable() != null) {
                 EventManager.instance.UseConsumeable(inventar.GetConsumeable());
+                }
             }
         }
         else {
@@ -175,7 +179,7 @@ public class Player : MonoBehaviour
                         }
                         else {
                             EventManager.instance.UpdateOutline(tempInteractable, false);
-                            EventManager.instance.UpdateOutline(tempInteractable, true);
+                            EventManager.instance.UpdateOutline(interactable, true);
                             tempInteractable = interactable;
                         }
                     }

@@ -45,8 +45,8 @@ public class EventManager : MonoBehaviour
     public void MakeNoise(float noiseVolume) {
         MakeNoiseEvent?.Invoke(this, new NoiseEvent{noise = noiseVolume});
     }
-    public void ObjectDestroyed(float value, GameObject gobject, Vector3 pos, DestroyType type) {
-        ObjectDestroyedEvent?.Invoke(this, new DestroyEvent{money = value, pos = pos, type = type});
+    public void ObjectDestroyed(float value, GameObject gobject, Vector3 pos, DestroyType type, bool isburning) {
+        ObjectDestroyedEvent?.Invoke(this, new DestroyEvent{money = value, pos = pos, type = type, burning = isburning});
     }
     IEnumerator DestroyAfter(GameObject toDestroy) {
         yield return new WaitForSeconds(1f);

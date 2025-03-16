@@ -11,6 +11,7 @@ public class DestryableItem : MonoBehaviour
     [SerializeField] protected int value;
     [SerializeField] public List<Collider> col = new List<Collider>();
     [SerializeField] public DestroyType type;
+    protected bool burning = false;
     protected bool destroyed = false;
     
     void Start()
@@ -23,7 +24,7 @@ public class DestryableItem : MonoBehaviour
     public void DestroyObject()
     {
         //ParticleSystem ka was da passiert
-        EventManager.instance.ObjectDestroyed(money, gameObject, transform.position, type);
+        EventManager.instance.ObjectDestroyed(money, gameObject, transform.position, type, burning);
         StartCoroutine(DestroyAfter());
     }
 

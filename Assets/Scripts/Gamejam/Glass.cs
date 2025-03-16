@@ -1,53 +1,19 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using FMODUnity;
-using System.Collections.Generic;
 
-[RequireComponent(typeof(StudioEventEmitter))]
 [RequireComponent(typeof(Outline))]
-public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
+public class Glass : DestryableItem, IThrowable, IInteractable
 {
-    private StudioEventEmitter emitter;
-    private Rigidbody rb;
+  private Rigidbody rb;
     [SerializeField] Camera cam;
-    [SerializeField] Transform burnPos;
-    
     private bool thrown = false;
     private Outline outline;
     private bool hit = false;
-    private bool isburning = false;
-    public void Burn()
-    {
-        if(!isburning) {
-        isburning = true;
-        Debug.Log("Jetzt");
-        StartCoroutine(HandleBurn());
-        }
-    }
-
-    public IEnumerator HandleBurn()
-    {
-        Debug.Log("Soundd in mich rein");
-        FireHandler.instance.PlaceParticleSystem(transform,burnPos.position, 20);
-        EventManager.instance.BurnStuff(transform.position);
-        emitter.Play();
-        while(hp > 0f) {
-            hp-= 10f;
-            yield return new WaitForSeconds(1f);
-        }
-        if(hp <= 0f) {
-            emitter.Stop();
-            EventManager.instance.FireEnded(transform.position);
-            DestroyObject();
-        }
-    }
 
     public void OnInteract(object sender, InteractEventArgs e)
     {
         if(e.interactable.Equals(this)) {
             EventManager.instance.ThrowablePickedUp(gameObject);
-            Debug.Log("Aufheben Stuhl");
+            Debug.Log("Aufheben Teller");
         }
     }
 
@@ -63,10 +29,10 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
         outline.enabled = false;
         Atstart();
         rb = GetComponent<Rigidbody>();
-        emitter = AudioManager.instance.InitializeEventEmitters(FMODEvents.instance.BurningSound, this.gameObject);
         EventManager.instance.OnInteract += OnInteract;
         EventManager.instance.UpdateOutlineEvent += HandleOutline;
     }
+
     private void Yeet() {
         transform.SetParent(null);
         rb.useGravity = true;
@@ -80,7 +46,6 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     void OnCollisionEnter(Collision collision)
     {
         if(thrown && collision.transform.tag != "Player") {
-            
             if(collision.gameObject.TryGetComponent<DestryableItem>(out DestryableItem item)) {
                 if(this.value >= item.GetValue()) {
                     item.DestroyObject();
