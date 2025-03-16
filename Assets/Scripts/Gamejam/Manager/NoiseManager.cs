@@ -31,9 +31,6 @@ public class NoiseManager : MonoBehaviour
     void Update() {
         manager.UpdateUI(noise, 100f);
         UpdateNoise();
-        if(Input.GetKeyDown(KeyCode.P)) {
-            noise = 105;
-        }
     }
 
     public void UpdateNoise() {

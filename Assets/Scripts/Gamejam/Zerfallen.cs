@@ -42,12 +42,6 @@ public class Zerfallen : MonoBehaviour
     {
         Setup(flag);
     }
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha9)) {
-            YeetComponents();
-        }
-    }
     public List<Collider> GetColliders() {
         return colls;
     }

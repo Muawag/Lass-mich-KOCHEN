@@ -10,10 +10,4 @@ public class AxeAnim : MonoBehaviour
         EventManager.instance.AttackEvent += (sender, e) => {animator.SetTrigger("Anim"); Debug.Log("Anim");};
 
     }
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Alpha7)) {
-            animator.SetTrigger("Anim");
-        }
-    }
 }
