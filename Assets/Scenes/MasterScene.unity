@@ -6289,6 +6289,10 @@ PrefabInstance:
       value: event:/Throw
       objectReference: {fileID: 0}
     - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <DestroyFire>k__BackingField.Path
+      value: event:/DestroyFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: <GlasBreak>k__BackingField.Guid.Data1
       value: 601231365
       objectReference: {fileID: 0}
@@ -6367,6 +6371,22 @@ PrefabInstance:
     - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: <ThrowSound>k__BackingField.Guid.Data4
       value: 806921197
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <DestroyFire>k__BackingField.Guid.Data1
+      value: 1207421245
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <DestroyFire>k__BackingField.Guid.Data2
+      value: 1231122884
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <DestroyFire>k__BackingField.Guid.Data3
+      value: 182504322
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <DestroyFire>k__BackingField.Guid.Data4
+      value: 1543315239
       objectReference: {fileID: 0}
     - target: {fileID: 8188815041263234680, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: axe
