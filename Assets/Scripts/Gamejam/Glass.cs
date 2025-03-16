@@ -8,6 +8,7 @@ public class Glass : DestryableItem, IThrowable, IInteractable
     private bool thrown = false;
     private Outline outline;
     private bool hit = false;
+    [SerializeField] GlassCheat cheat;
 
     public void OnInteract(object sender, InteractEventArgs e)
     {
@@ -34,6 +35,7 @@ public class Glass : DestryableItem, IThrowable, IInteractable
     }
 
     private void Yeet() {
+        cheat.UpdateOnThrow();
         transform.SetParent(null);
         rb.useGravity = true;
         rb.isKinematic = false;

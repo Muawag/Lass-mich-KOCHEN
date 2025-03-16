@@ -42,4 +42,7 @@ public class Zerfallen : MonoBehaviour
     public List<Collider> GetColliders() {
         return colls;
     }
+    public List<GameObject> GetChilds() {
+        return components;
+    }
 }
