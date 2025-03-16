@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     
     public bool hasEscaped = false;
     public GameObject player;
-    public float escapeTimer = 15f;
+    public float escapeTimer = 10f;
     public bool gameIsActive = true;
     public static GameManager instance;
 
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
         
     }
     private void Start() {
+        escapeTimer = 10f;
         EventManager.instance.TimesUpEvent += alarm;    
         EventManager.instance.AlarmEvent += alarm;
         EventManager.instance.EscapedEvent += escaped;
@@ -48,7 +49,7 @@ public class GameManager : MonoBehaviour
     public void gameover(){
         if(!hasEscaped){
             EventManager.instance.GameOver();
-            player.GetComponent<AudioPlayer>().playGameOverSound();
+            //player.GetComponent<AudioPlayer>().playGameOverSound();
             Screen.Setup(false);
         }
         

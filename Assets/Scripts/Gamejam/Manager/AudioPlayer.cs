@@ -1,6 +1,7 @@
 using UnityEngine;
 using FMOD.Studio;
 using FMODUnityResonance;
+using System;
 public class AudioPlayer : MonoBehaviour
 {
     public GameObject player;
@@ -11,6 +12,7 @@ public class AudioPlayer : MonoBehaviour
     void Start()
     {
         EventManager.instance.MolotovThrownEvent += playMolotovSound;
+        EventManager.instance.DamageObjectEvent += playKloppSound;
         PlayerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerFootsteps, gameObject.transform);
         PlayerSprintFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerSprintFootsteps, gameObject.transform);
         playerRb = player.GetComponent<Player>().rb;
@@ -67,7 +69,7 @@ public class AudioPlayer : MonoBehaviour
     public void playSuccesSound(){
         AudioManager.instance.PlayOneShot(FMODEvents.instance.Success, transform.position);
     }
-    public void playKloppSound(){
+    public void playKloppSound(object sender, EventArgs e){
          AudioManager.instance.PlayOneShot(FMODEvents.instance.Kloppen, transform.position);
     }
     
