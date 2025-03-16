@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class NoiseManager : MonoBehaviour
 {
     
+    public bool AlarmStarted = false;
     public static NoiseManager instance {get; private set;}
     
     public GameObject player;
@@ -23,7 +24,7 @@ public class NoiseManager : MonoBehaviour
     private void Start() {
         manager = this.GetComponent<ManagerUI>();
         EventManager.instance.MakeNoiseEvent += addNoise;
-        
+        AlarmStarted = false;
         //StartCoroutine(noiseCheck());
     }
     
@@ -40,9 +41,12 @@ public class NoiseManager : MonoBehaviour
             noise -= Time.deltaTime * 2f;
         }
 
-        if(noise >= 100f && noise <200f){
-            noise = 200f;
-            EventManager.instance.Alarm();
+        if(noise >= 100f && !AlarmStarted){
+            
+                EventManager.instance.Alarm();
+                AlarmStarted = true;
+            
+            
         }
     }
     
