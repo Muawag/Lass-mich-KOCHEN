@@ -50,7 +50,7 @@ public class Molotov : Consumeable
         colliders = Physics.OverlapSphere(transform.position, 3f, targetMask);
         foreach (Collider item in colliders)
         {
-            item.gameObject.GetComponent<IBurnable>().Burn();
+            item.transform.parent.GetComponentInParent<IBurnable>().Burn();
         }
             StartCoroutine(HandleDestroy());
         }

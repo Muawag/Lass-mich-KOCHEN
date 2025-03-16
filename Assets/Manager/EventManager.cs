@@ -26,6 +26,7 @@ public class EventManager : MonoBehaviour
     public EventHandler<ConsumeableUseEventArgs> RemoveConFromInvEvent;
     public EventHandler<OutlineUpdateEventArgs> UpdateOutlineEvent;
     public EventHandler<EventArgs> GameOverEvent;
+    public EventHandler<ObjDestroyedEventArgs> ObjZerfallenEvent;
 
     
     private void Awake() {
@@ -102,5 +103,7 @@ public class EventManager : MonoBehaviour
     public void GameOver() {
         GameOverEvent?.Invoke(this, EventArgs.Empty);
     }
-
+    public void ObjectDestroyed(DestryableItem item) {
+        ObjZerfallenEvent?.Invoke(this, new ObjDestroyedEventArgs{item = item});
+    }
 }

@@ -72,4 +72,9 @@ public class Plate : DestryableItem, IThrowable, IInteractable
             ShowOutline(e.flag);
         }
     }
+
+    public void DisableOutline(object sender, ObjDestroyedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }

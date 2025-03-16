@@ -12,6 +12,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     private Rigidbody rb;
     [SerializeField] Camera cam;
     [SerializeField] Transform burnPos;
+    private GameObject partSys;
     
     private bool thrown = false;
     private Outline outline;
@@ -28,7 +29,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     public IEnumerator HandleBurn()
     {
         Debug.Log("Soundd in mich rein");
-        FireHandler.instance.PlaceParticleSystem(transform,burnPos.position, 20);
+        partSys = FireHandler.instance.PlaceParticleSystem(transform,burnPos.position, 20);
         EventManager.instance.BurnStuff(transform.position);
         emitter.Play();
         while(hp > 0f) {
@@ -37,6 +38,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
         }
         if(hp <= 0f) {
             emitter.Stop();
+            Destroy(partSys);
             EventManager.instance.FireEnded(transform.position);
             DestroyObject();
         }
@@ -61,6 +63,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
         outline = GetComponent<Outline>();
         outline.enabled = false;
         Atstart();
+        EventManager.instance.ObjZerfallenEvent += DisableOutline;
         rb = GetComponent<Rigidbody>();
         emitter = AudioManager.instance.InitializeEventEmitters(FMODEvents.instance.BurningSound, this.gameObject);
         EventManager.instance.OnInteract += OnInteract;
@@ -103,6 +106,13 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     {
         if(e.interactable.Equals(this) && !thrown && !destroyed) {
             ShowOutline(e.flag);
+        }
+    }
+
+    public void DisableOutline(object sender, ObjDestroyedEventArgs e)
+    {
+        if(e.item.Equals(this)) {
+            outline.enabled = false;
         }
     }
 }

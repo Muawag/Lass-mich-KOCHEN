@@ -12,7 +12,8 @@ public class DestryableItem : MonoBehaviour
     [SerializeField] public List<Collider> col = new List<Collider>();
     [SerializeField] public DestroyType type;
     protected bool burning = false;
-    protected bool destroyed = false;
+    public bool destroyed = false;
+    [SerializeField] private Zerfallen zerfallen;
     
     void Start()
     {
@@ -20,6 +21,8 @@ public class DestryableItem : MonoBehaviour
     }
     protected void Atstart() {
         EventManager.instance.DamageObjectEvent += GetDamaged;
+        StartCoroutine(GetColls());
+
     }
     public void DestroyObject()
     {
@@ -38,8 +41,10 @@ public class DestryableItem : MonoBehaviour
     }
     IEnumerator DestroyAfter() {
         destroyed = true;
+        zerfallen.YeetComponents();
+        EventManager.instance.ObjectDestroyed(this);
         yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     private void GetDamaged(object sender, DamageEventArgs e) {
@@ -49,6 +54,10 @@ public class DestryableItem : MonoBehaviour
     }
     public int GetValue() {
         return value;
+    }
+    IEnumerator GetColls() {
+        yield return new WaitForSeconds(0.5f);
+        col = zerfallen.GetColliders();
     }
     
 }

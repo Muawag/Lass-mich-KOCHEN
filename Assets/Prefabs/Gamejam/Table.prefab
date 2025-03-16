@@ -129,7 +129,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773227286154723224}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ba6cdcbcdc951a428aa3753d04142d8, type: 3}
   m_Name: 
@@ -141,6 +141,8 @@ MonoBehaviour:
   col:
   - {fileID: 0}
   type: 2
+  destroyed: 0
+  zerfallen: {fileID: 0}
   burnPos: {fileID: 6734686355823839778}
 --- !u!65 &8314718679394100996
 BoxCollider:
