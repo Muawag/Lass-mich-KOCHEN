@@ -6,28 +6,33 @@ public class PointUI : MonoBehaviour
 {
     [SerializeField] private CanvasGroup display;
     [SerializeField] private TextMeshProUGUI text;
+    private float timer;
 
     void Start() {
         display.alpha = 0f;
         EventManager.instance.ObjectDestroyedEvent += AddScore;
     }
 
-    private void SpawnPoints(float value) {
-        float timer;
-        float progress;
-        display.alpha = 1f;
-        text.text = "+" + value.ToString();
-        timer = 0f;
-        progress = 0f;
 
-        while(timer < .3f)
+    IEnumerator SpawnPoints(float value) {
+        float timer = 0f;
+        float progress = 0f;
+        display.alpha = 1f;
+        Debug.Log("und jetzt war kurz das display:");
+        Debug.Log(display.alpha);
+        text.text = "+" + value.ToString();
+        yield return new WaitForSeconds(0.5f);
+        for (int i = 0; i < 10; i++)
         {
-            timer += Time.deltaTime;
-            progress = timer / .3f;
-            display.alpha = progress;
+            if(display.alpha >= 0.05f) {
+
+                display.alpha -= 0.05f;
+            }
+            yield return new WaitForSeconds(.03f);
         }
+        display.alpha = 0f;
     }   
     private void AddScore(object sender, DestroyEvent e) {
-        SpawnPoints(e.money); 
+        StartCoroutine(SpawnPoints(e.money)); 
     }
 }
