@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Clock : MonoBehaviour
 {
     public bool timesUp;
+    
     [SerializeField] private TextMeshProUGUI time;
     public int clock;
     [SerializeField] private ClockUI clockUI;
@@ -20,7 +21,7 @@ public class Clock : MonoBehaviour
         updateTime();
     }
     IEnumerator Time (){
-        while(GameManager.instance.gameIsActive && !timesUp){
+        while(!GameManager.instance.hasEscaped && !timesUp){
            
             if(clock == 20){
                 
