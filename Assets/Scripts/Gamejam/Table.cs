@@ -1,12 +1,12 @@
 using System.Collections;
 using FMODUnity;
 using UnityEngine;
-
 [RequireComponent(typeof(StudioEventEmitter))]
 public class Table : DestryableItem, IBurnable
 {
     [SerializeField] Transform burnPos;
     private StudioEventEmitter emitter;
+    private GameObject partSys;
 
 
     public void Burn()
@@ -21,7 +21,7 @@ public class Table : DestryableItem, IBurnable
     public IEnumerator HandleBurn()
     {
         Debug.Log("Tisch in mich rein");
-        FireHandler.instance.PlaceParticleSystem(transform,burnPos.position, 40);
+        partSys = FireHandler.instance.PlaceParticleSystem(transform,burnPos.position, 40);
         EventManager.instance.BurnStuff(transform.position);
         emitter.Play();
         while(hp > 0f) {
@@ -30,6 +30,7 @@ public class Table : DestryableItem, IBurnable
         }
         if(hp <= 0f) {
             emitter.Stop();
+            Destroy(partSys);
             EventManager.instance.FireEnded(transform.position);
             DestroyObject();
         }

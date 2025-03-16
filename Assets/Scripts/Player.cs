@@ -123,6 +123,9 @@ public class Player : MonoBehaviour
                     StartCoroutine(DelayAttack());
                     EventManager.instance.DamageObject(interact, inventar.GetDamage());
                 }
+                else {
+                    Debug.Log("nionbo");
+                }
             }
             }
             else if(inventar.getInvTypeSelIndex() == 1) {
