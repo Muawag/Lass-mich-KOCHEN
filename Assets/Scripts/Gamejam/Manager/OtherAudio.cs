@@ -25,7 +25,7 @@ public class OtherAudio : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(NoiseManager.instance.noise >= 100 && !ToLoudSoundPlayed && !AlarmIsOn){
+        if(NoiseManager.instance.noise >= 100 && !ToLoudSoundPlayed && !AlarmIsOn && !GameManager.instance.hasEscaped){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.ToLoud, player.transform.position);
             ToLoudSoundPlayed = true;
         }
@@ -54,7 +54,7 @@ public class OtherAudio : MonoBehaviour
         }
     }
     void StartAlarmClock(object sender, EventArgs e){
-        if(!ToLoudSoundPlayed){
+        if(!ToLoudSoundPlayed && !GameManager.instance.hasEscaped){
             AlarmIsOn = true;
             AudioManager.instance.PlayOneShot(FMODEvents.instance.AlarmClock, player.transform.position);
         }
