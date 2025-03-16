@@ -7,6 +7,7 @@ public class MenuControl : MonoBehaviour
     void Start()
     {
         StartCoroutine(WaitForVideo());
+        button.SetActive(false);
     }
 
     // Update is called once per frame
