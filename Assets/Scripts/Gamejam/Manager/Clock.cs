@@ -6,13 +6,11 @@ using UnityEngine.UI;
 
 public class Clock : MonoBehaviour
 {
-    public GameObject clockUi;
-    public boolean timesUp;
-    private TextMeshProUGUI time;
+    public bool timesUp;
+    [SerializeField] private TextMeshProUGUI time;
     public int clock;
     public void Start()
     {
-        time = clockUi.GetComponent<TextMeshProUGUI>();
         clock = 0;
         StartCoroutine(Time());
     }
@@ -31,7 +29,7 @@ public class Clock : MonoBehaviour
 
             else{
                 yield return new WaitForSeconds(10);
-                clock += 1f;
+                clock += 1;
             }
         }
     
