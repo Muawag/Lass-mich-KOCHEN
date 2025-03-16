@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class Clock : MonoBehaviour
 {
+    public bool TimesUp = false;
     public GameObject clockUi;
     private TextMeshProUGUI time;
     public float clock;
     public void Start()
     {
         time = clockUi.GetComponent<TextMeshProUGUI>();
-        clock = 22.00f;
+        clock = 23.00f;
         StartCoroutine(Time());
     }
     void FixedUpdate()
@@ -20,15 +21,16 @@ public class Clock : MonoBehaviour
         updateTime();
     }
     IEnumerator Time (){
-        while(GameManager.instance.gameIsActive){
-           
+       
+        while(GameManager.instance.gameIsActive && !TimesUp){
+            
             if(clock == 4.00f){
-                
+                TimesUp = true;
                 EventManager.instance.TimesUp();
             }
-
+            
             else{
-                
+                yield return new WaitForSeconds(10);
                 if(clock == 23){
                     clock = 0;
                 }
@@ -36,7 +38,7 @@ public class Clock : MonoBehaviour
                     clock += 1f;
                 }
             }
-            yield return new WaitForSeconds(10);
+            
         }
     
     }

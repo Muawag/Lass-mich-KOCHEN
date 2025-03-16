@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using FMOD.Studio;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class OtherAudio : MonoBehaviour
     {
         ToLoudSoundPlayed = false;
         BurnSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.BurningSound, player.gameObject.transform);
+        EventManager.instance.TimesUpEvent += StartAlarmClock;
         EventManager.instance.BurningThingEvent += StartBurning;
         EventManager.instance.ObjectDestroyedEvent += BreakSounds;
     }
@@ -47,5 +49,9 @@ public class OtherAudio : MonoBehaviour
         else if(e.burning){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.DestroyFire, e.pos);
         }
+    }
+    void StartAlarmClock(object sender, EventArgs e){
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.AlarmClock, player.transform.position);
+       
     }
 }
