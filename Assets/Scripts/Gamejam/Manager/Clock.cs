@@ -31,7 +31,7 @@ public class Clock : MonoBehaviour
             }
 
             else{
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(2.5f);
                 clock += 1;
             }
         }
