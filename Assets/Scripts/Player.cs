@@ -53,7 +53,13 @@ public class Player : MonoBehaviour
         if(context.performed) {
             if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
                 if(hit.transform.TryGetComponent<IInteractable>(out IInteractable interact)) {
+                    if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem item)) {
+                        if(!item.IsBurning()) {
+                            EventManager.instance.Interact(interact);
+                        }
+                    }else {
                     EventManager.instance.Interact(interact);
+                    }
                 }
             }
 

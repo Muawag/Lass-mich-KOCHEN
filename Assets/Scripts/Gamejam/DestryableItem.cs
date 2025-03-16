@@ -59,5 +59,8 @@ public class DestryableItem : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         col = zerfallen.GetColliders();
     }
+    public bool IsBurning() {
+        return burning;
+    }
     
 }
