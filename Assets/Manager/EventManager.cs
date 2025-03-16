@@ -30,6 +30,7 @@ public class EventManager : MonoBehaviour
     public EventHandler<EventArgs> EscapedAfterAlarmEvent;
     public EventHandler<EventArgs> EscapedAfterToLoudEvent;
     public EventHandler<EventArgs> AttackEvent;
+    public EventHandler<EventArgs> ThrowObjEvent;
 
     
     private void Awake() {
@@ -117,5 +118,8 @@ public class EventManager : MonoBehaviour
     }
     public void Attack() {
         AttackEvent?.Invoke(this, EventArgs.Empty);
+    }
+    public void ThrowObj() {
+        ThrowObjEvent?.Invoke(this, EventArgs.Empty);
     }
 }

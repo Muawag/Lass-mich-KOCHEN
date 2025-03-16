@@ -147,6 +147,7 @@ public class Player : MonoBehaviour
         else {
             Debug.Log("Stuhl Yeeten");
             inventar.GetThrowable().Throw();
+            EventManager.instance.ThrowObj();
             inventar.ResThrowObj();
         }
         }

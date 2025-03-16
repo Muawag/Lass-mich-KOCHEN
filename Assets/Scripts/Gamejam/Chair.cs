@@ -77,7 +77,7 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
             collider.enabled = true;
         }
         thrown = true;
-        rb.AddForce((transform.forward + cam.transform.forward) *5, ForceMode.Impulse);
+        rb.AddForce((transform.forward + cam.transform.forward) *5, ForceMode.Impulse);   
     }
     void OnCollisionEnter(Collision collision)
     {

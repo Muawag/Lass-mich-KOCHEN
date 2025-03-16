@@ -1,15 +1,22 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Outline))]
 public class EscapeDoor : MonoBehaviour, IInteractable
 {
+    private Outline outline;
+
     public void DisableOutline(object sender, ObjDestroyedEventArgs e)
     {
-        throw new System.NotImplementedException();
-    }
+            if(e.item.Equals(this)) {
+                outline.enabled = false;
+        }    
+        }
 
     public void HandleOutline(object sender, OutlineUpdateEventArgs e)
     {
-        throw new System.NotImplementedException();
+        if(e.interactable.Equals(this)) {
+            ShowOutline(e.flag);
+        }
     }
 
     public void OnInteract(object sender, InteractEventArgs e)
@@ -24,10 +31,13 @@ public class EscapeDoor : MonoBehaviour, IInteractable
 
     public void ShowOutline(bool flag)
     {
-        throw new System.NotImplementedException();
+        outline.enabled = flag;
     }
 
     void Start() {
         EventManager.instance.OnInteract += OnInteract;
+        EventManager.instance.UpdateOutlineEvent += HandleOutline;
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
     }
 }
