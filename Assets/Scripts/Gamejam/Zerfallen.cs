@@ -10,6 +10,7 @@ public class Zerfallen : MonoBehaviour
     MeshCollider mTemp;
     private bool yeeted = false;
     [SerializeField] bool flag;
+    public bool burning = false;
 
     public void YeetComponents() {
         if(!yeeted) {
