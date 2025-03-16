@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colls: []
+  flag: 1
 --- !u!114 &811842184348118690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,7 +366,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zerfallen: {fileID: 4007025075773638720}
-  oldMesh: {fileID: 3879742100548916879}
+  oldMesh:
+  - {fileID: 3879742100548916879}
 --- !u!4 &6881082189151702061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a0de62af6129f704cb1405ee429a7c99, type: 3}

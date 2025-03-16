@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colls: []
+  flag: 1
 --- !u!4 &2927203657185303754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e284570caac1b6144bb1200cb0576675, type: 3}

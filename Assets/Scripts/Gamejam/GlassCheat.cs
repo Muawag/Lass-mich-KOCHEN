@@ -8,7 +8,7 @@ public class GlassCheat : MonoBehaviour
     private List<GameObject> g;
     private List<MeshRenderer> renderers = new List<MeshRenderer>();
     private MeshRenderer rendTemp;
-    [SerializeField] MeshRenderer oldMesh;
+    public List<MeshRenderer> oldMesh = new List<MeshRenderer>();
 
     public IEnumerator UnsichtbarOnStart() {
         yield return new WaitForSeconds(0.5f);
@@ -26,12 +26,17 @@ public class GlassCheat : MonoBehaviour
         {
             rend.enabled = true;
         }
-        oldMesh.enabled = false;
+        foreach (MeshRenderer r in oldMesh)
+        {
+            r.enabled = false;
+        }
+        
     }
 
     void Start()
     {
         StartCoroutine(UnsichtbarOnStart());
     }
+    
 
 }

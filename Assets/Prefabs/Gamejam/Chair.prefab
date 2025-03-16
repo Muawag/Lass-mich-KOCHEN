@@ -139,9 +139,7 @@ MonoBehaviour:
   noisevolume: 30
   money: 150
   value: 2
-  col:
-  - {fileID: 0}
-  - {fileID: 0}
+  col: []
   type: 1
   destroyed: 0
   zerfallen: {fileID: 4209871900177655244}
@@ -370,3 +368,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colls: []
+  flag: 1

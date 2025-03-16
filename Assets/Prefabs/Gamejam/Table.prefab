@@ -360,3 +360,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colls: []
+  flag: 1

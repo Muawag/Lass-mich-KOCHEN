@@ -126,12 +126,16 @@ public class Player : MonoBehaviour
             if(Physics.Raycast(cam.transform.position, cam.transform.forward,  out RaycastHit hit, interactDistance)) {
                 if(hit.transform.TryGetComponent<DestryableItem>(out DestryableItem interact) && !interact.destroyed) {
                     Debug.Log("AGGGGGGGGG");
-                    StartCoroutine(DelayAttack());
+                    Attack();
                     EventManager.instance.DamageObject(interact, inventar.GetDamage());
                 }
                 else {
                     Debug.Log("nionbo");
+                    Attack();
                 }
+            }
+            else {
+                Attack();
             }
             }
             else if(inventar.getInvTypeSelIndex() == 1) {
@@ -206,6 +210,10 @@ public class Player : MonoBehaviour
     private void FreezeRot() {
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
+    }
+    private void Attack() {
+        StartCoroutine(DelayAttack());
+        EventManager.instance.Attack();
     }
 }
 

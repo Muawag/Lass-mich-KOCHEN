@@ -13,6 +13,9 @@ public class Molotov : Consumeable
     [SerializeField] Transform burnPos;
     GameObject partsysCreated;
     [SerializeField] GameObject explodePartSys;
+    [SerializeField] GlassCheat cheat;
+    [SerializeField] Zerfallen zerfallen;
+    private bool burningOver = false;
     void Start()
     {
         Atstart();
@@ -40,6 +43,7 @@ public class Molotov : Consumeable
         rb.useGravity = true;
         rb.isKinematic = false;
         col.enabled = true;
+        cheat.UpdateOnThrow();
         rb.AddForce((transform.forward + cam.transform.forward) *10, ForceMode.Impulse);
     }
 
@@ -47,6 +51,7 @@ public class Molotov : Consumeable
     {
         if(collision.transform.tag != "Player" && !activatetd) {
         PlaceExplosion();
+        zerfallen.YeetComponents();
         Debug.Log("Burn");
         activatetd = true;
         colliders = Physics.OverlapSphere(transform.position, 3f, targetMask);
@@ -62,8 +67,10 @@ public class Molotov : Consumeable
         EventManager.instance.MolotovThrown(transform.position);
         yield return new WaitForSeconds(3.1f);
         EventManager.instance.MakeNoise(noise);
-        Destroy(gameObject);
+        //Destroy(gameObject);
         //bombardino crocodilo
+        burningOver = true;
+        Destroy(partsysCreated);
     }
     private void CreateMolotovParticle() {
         partsysCreated = Instantiate(partSystem, burnPos.position, burnPos.rotation);
@@ -76,7 +83,9 @@ public class Molotov : Consumeable
         
     }
     private void UpdateRot() {
+        if(!burningOver) {
         partsysCreated.transform.rotation = new Quaternion(0,0,0,1);
+        }
     }
     private void PlaceExplosion() {
         Debug.Log("Explode");
