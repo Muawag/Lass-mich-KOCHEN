@@ -13,6 +13,7 @@ public class AudioPlayer : MonoBehaviour
     {
         EventManager.instance.MolotovThrownEvent += playMolotovSound;
         EventManager.instance.DamageObjectEvent += playKloppSound;
+        
         PlayerFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerFootsteps, gameObject.transform);
         PlayerSprintFootsteps = AudioManager.instance.CreateEventInstance(FMODEvents.instance.PlayerSprintFootsteps, gameObject.transform);
         playerRb = player.GetComponent<Player>().rb;
@@ -70,7 +71,9 @@ public class AudioPlayer : MonoBehaviour
         AudioManager.instance.PlayOneShot(FMODEvents.instance.Success, transform.position);
     }
     public void playKloppSound(object sender, EventArgs e){
-         AudioManager.instance.PlayOneShot(FMODEvents.instance.Kloppen, transform.position);
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.Kloppen, transform.position);
     }
-    
+    public void playThrowSound(object sender, EventArgs e){
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.ThrowSound, transform.position);
+    }   
 }

@@ -3,7 +3,6 @@ using System.Collections;
 using System.ComponentModel.Design.Serialization;
 using Mono.CSharp;
 using Unity.VisualScripting;
-using UnityEditor.SearchService;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
