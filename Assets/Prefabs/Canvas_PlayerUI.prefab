@@ -1079,6 +1079,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6291034142886794393}
+  - component: {fileID: 911123958535321357}
+  - component: {fileID: 178225282056895621}
   m_Layer: 5
   m_Name: Clock
   m_TagString: Untagged
@@ -1111,6 +1113,36 @@ RectTransform:
   m_AnchoredPosition: {x: 481.69977, y: -136}
   m_SizeDelta: {x: 178.871, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &911123958535321357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336740351862633422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6647caec24bf8774da5a4dbe38581434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: {fileID: 785020459737333105}
+  left: {fileID: 4633531994443151451}
+  right: {fileID: 1513679678768677894}
+  bottom: {fileID: 702962263002470314}
+  top: {fileID: 5079857955647417311}
+  icon: {fileID: 5053448424937978966}
+--- !u!225 &178225282056895621
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2336740351862633422}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2420191758785768109
 GameObject:
   m_ObjectHideFlags: 0

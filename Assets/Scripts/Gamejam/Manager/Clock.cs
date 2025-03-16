@@ -9,6 +9,7 @@ public class Clock : MonoBehaviour
     public bool timesUp;
     [SerializeField] private TextMeshProUGUI time;
     public int clock;
+    [SerializeField] private ClockUI clockUI;
     public void Start()
     {
         clock = 0;
@@ -25,6 +26,7 @@ public class Clock : MonoBehaviour
                 
                 EventManager.instance.TimesUp();
                 timesUp = true;
+                clockUI.StartFlash();
             }
 
             else{
