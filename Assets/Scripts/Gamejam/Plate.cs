@@ -28,6 +28,7 @@ public class Plate : DestryableItem, IThrowable, IInteractable
     {
         outline = GetComponent<Outline>();
         outline.enabled = false;
+        EventManager.instance.ObjZerfallenEvent += DisableOutline;
         Atstart();
         rb = GetComponent<Rigidbody>();
         EventManager.instance.OnInteract += OnInteract;
@@ -75,6 +76,8 @@ public class Plate : DestryableItem, IThrowable, IInteractable
 
     public void DisableOutline(object sender, ObjDestroyedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        if(e.item.Equals(this)) {
+            outline.enabled = false;
+        }
     }
 }
