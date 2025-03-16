@@ -755,6 +755,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a28ebc0022a1b4dbc2677a834600e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &206855507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 785020459737333105, guid: 669bd60cc567488429ffa49e387dced4, type: 3}
+  m_PrefabInstance: {fileID: 35631583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &233108482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3025,6 +3036,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3332727312300482278, guid: 55c5f927ec11ea5409f9ee15d579e07d, type: 3}
   m_PrefabInstance: {fileID: 1577479244}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &950138961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 911123958535321357, guid: 669bd60cc567488429ffa49e387dced4, type: 3}
+  m_PrefabInstance: {fileID: 35631583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6647caec24bf8774da5a4dbe38581434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &960641740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4088,6 +4110,10 @@ PrefabInstance:
       value: event:/GlasBreak
       objectReference: {fileID: 0}
     - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <AlarmClock>k__BackingField.Path
+      value: event:/AlarmClock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: <ChairBreak>k__BackingField.Path
       value: event:/ChairBreak
       objectReference: {fileID: 0}
@@ -4122,6 +4148,22 @@ PrefabInstance:
     - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: <GlasBreak>k__BackingField.Guid.Data4
       value: 821859481
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <AlarmClock>k__BackingField.Guid.Data1
+      value: 1947766156
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <AlarmClock>k__BackingField.Guid.Data2
+      value: 1216860508
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <AlarmClock>k__BackingField.Guid.Data3
+      value: -1595691642
+      objectReference: {fileID: 0}
+    - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: <AlarmClock>k__BackingField.Guid.Data4
+      value: -680845372
       objectReference: {fileID: 0}
     - target: {fileID: 5841050192639692100, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: <ChairBreak>k__BackingField.Guid.Data1
@@ -4219,6 +4261,14 @@ PrefabInstance:
       propertyPath: inventar
       value: 
       objectReference: {fileID: 1577479245}
+    - target: {fileID: 9022060157167144693, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: time
+      value: 
+      objectReference: {fileID: 206855507}
+    - target: {fileID: 9022060157167144693, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: clockUI
+      value: 
+      objectReference: {fileID: 950138961}
     - target: {fileID: 9022060157167144693, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: clockUi
       value: 
