@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using FMOD.Studio;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class OtherAudio : MonoBehaviour
 {
     
+    public bool AlarmIsOn = false;
     public GameObject player;
     private EventInstance BurnSound;
     private List<EventInstance> sounds = new List<EventInstance>();
@@ -15,6 +17,7 @@ public class OtherAudio : MonoBehaviour
     void Start()
     {
         ToLoudSoundPlayed = false;
+        AlarmIsOn = false;
         BurnSound = AudioManager.instance.CreateEventInstance(FMODEvents.instance.BurningSound, player.gameObject.transform);
         EventManager.instance.TimesUpEvent += StartAlarmClock;
         EventManager.instance.BurningThingEvent += StartBurning;
@@ -22,7 +25,7 @@ public class OtherAudio : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if(NoiseManager.instance.noise >= 100 && !ToLoudSoundPlayed){
+        if(NoiseManager.instance.noise >= 100 && !ToLoudSoundPlayed && !AlarmIsOn){
             AudioManager.instance.PlayOneShot(FMODEvents.instance.ToLoud, player.transform.position);
             ToLoudSoundPlayed = true;
         }
@@ -51,7 +54,10 @@ public class OtherAudio : MonoBehaviour
         }
     }
     void StartAlarmClock(object sender, EventArgs e){
-        AudioManager.instance.PlayOneShot(FMODEvents.instance.AlarmClock, player.transform.position);
+        if(!ToLoudSoundPlayed){
+            AlarmIsOn = true;
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.AlarmClock, player.transform.position);
+        }
        
     }
 }
