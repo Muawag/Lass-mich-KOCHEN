@@ -6384,6 +6384,10 @@ PrefabInstance:
       propertyPath: inventar
       value: 
       objectReference: {fileID: 1577479245}
+    - target: {fileID: 9022060157167144693, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
+      propertyPath: clockUi
+      value: 
+      objectReference: {fileID: 1207336881}
     - target: {fileID: 9156054693285601665, guid: 59dc720a9e2c5344fbe72f4970e5be17, type: 3}
       propertyPath: player
       value: 

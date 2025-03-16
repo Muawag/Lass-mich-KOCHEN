@@ -16,11 +16,10 @@ public class Chair : DestryableItem, IBurnable, IThrowable, IInteractable
     private bool thrown = false;
     private Outline outline;
     private bool hit = false;
-    private bool isburning = false;
     public void Burn()
     {
-        if(!isburning) {
-        isburning = true;
+        if(burning) {
+        burning = true;
         Debug.Log("Jetzt");
         StartCoroutine(HandleBurn());
         }
