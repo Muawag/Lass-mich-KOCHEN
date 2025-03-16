@@ -523,6 +523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1999519100}
   - component: {fileID: 1999519099}
+  - component: {fileID: 1999519101}
   m_Layer: 0
   m_Name: VideoPlayer
   m_TagString: Untagged
@@ -548,7 +549,7 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
@@ -558,10 +559,10 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
-  m_WaitForFirstFrame: 1
+  m_WaitForFirstFrame: 0
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
 --- !u!4 &1999519100
@@ -579,6 +580,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1999519101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999519098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcc5c2641ee9eed4fab658f4b22e5acf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoFileName: animiertes blatt (1).mp4
 --- !u!1 &2024372164
 GameObject:
   m_ObjectHideFlags: 0
