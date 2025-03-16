@@ -12,6 +12,7 @@ public class Molotov : Consumeable
     [SerializeField] GameObject partSystem;
     [SerializeField] Transform burnPos;
     GameObject partsysCreated;
+    [SerializeField] GameObject explodePartSys;
     void Start()
     {
         Atstart();
@@ -45,6 +46,7 @@ public class Molotov : Consumeable
     void OnCollisionEnter(Collision collision)
     {
         if(collision.transform.tag != "Player" && !activatetd) {
+        PlaceExplosion();
         Debug.Log("Burn");
         activatetd = true;
         colliders = Physics.OverlapSphere(transform.position, 3f, targetMask);
@@ -58,7 +60,7 @@ public class Molotov : Consumeable
     }
     IEnumerator HandleDestroy() {
         EventManager.instance.MolotovThrown(transform.position);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(3.1f);
         EventManager.instance.MakeNoise(noise);
         Destroy(gameObject);
         //bombardino crocodilo
@@ -75,5 +77,16 @@ public class Molotov : Consumeable
     }
     private void UpdateRot() {
         partsysCreated.transform.rotation = new Quaternion(0,0,0,1);
+    }
+    private void PlaceExplosion() {
+        Debug.Log("Explode");
+        GameObject explode = Instantiate(explodePartSys, transform.position, Quaternion.identity);
+        StartCoroutine(DelExplosion(explode));
+    }
+    IEnumerator DelExplosion(GameObject g) {
+        Debug.Log("dawdawdagawg");
+        yield return new WaitForSeconds(3f);
+        Debug.Log("Del");
+        Destroy(g);
     }
 }
