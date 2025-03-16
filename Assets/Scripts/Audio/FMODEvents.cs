@@ -14,6 +14,8 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference ThrowSound {get; private set;}
     [field: Header("Other Audio")]
     
+    
+    [field: SerializeField] public EventReference AlarmClock {get; private set;}
     [field: SerializeField] public EventReference DestroyFire {get; private set;}
     [field: SerializeField] public EventReference ChairBreak {get; private set;}
     [field: SerializeField] public EventReference GlasBreak {get; private set;}
